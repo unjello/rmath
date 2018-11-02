@@ -41,7 +41,7 @@ PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
 SpacesBeforeTrailingComments: 2
 Cpp11BracedListStyle: true
-Standard: Cpp17
+Standard: Cpp11
 IndentWidth: 4
 TabWidth: 8
 UseTab: Never
@@ -59,4 +59,3 @@ CommentPragmas: '^ IWYU pragma:'
 ForEachMacros: [ foreach, Q_FOREACH, BOOST_FOREACH ]
 SpaceBeforeParens: ControlStatements
 DisableFormat:   false
-...
