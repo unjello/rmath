@@ -18,6 +18,9 @@ struct point<2, T> {
         };
         T data[2];
     };
+
+    constexpr point()                   = default;
+    constexpr point(point<2, T>& const) = default;
 };
 
 template <typename T>
@@ -31,6 +34,9 @@ struct point<3, T> {
         };
         T data[4];
     };
+
+    constexpr point()                   = default;
+    constexpr point(point<3, T>& const) = default;
 };
 
 template <typename T>
@@ -44,6 +50,9 @@ struct point<4, T> {
         };
         T data[4];
     };
+
+    constexpr point()                   = default;
+    constexpr point(point<4, T>& const) = default;
 };
 
 typedef point<2, unsigned int> upt2;
