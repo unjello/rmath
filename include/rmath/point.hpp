@@ -70,13 +70,13 @@ struct point<4, T> {
         , w(scalar) {}
 };
 
-typedef point<2, unsigned int> upt2;
-typedef point<3, unsigned int> upt3;
-typedef point<4, unsigned int> upt4;
+typedef point<2, uint32_t> upt2;
+typedef point<3, uint32_t> upt3;
+typedef point<4, uint32_t> upt4;
 
-typedef point<2, int> ipt2;
-typedef point<3, int> ipt3;
-typedef point<4, int> ipt4;
+typedef point<2, int32_t> ipt2;
+typedef point<3, int32_t> ipt3;
+typedef point<4, int32_t> ipt4;
 
 typedef point<2, float> pt2;
 typedef point<3, float> pt3;
