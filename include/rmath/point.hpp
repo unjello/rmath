@@ -25,6 +25,8 @@ struct point<2, T> {
     constexpr explicit point(T scalar)
         : x(scalar)
         , y(scalar) {}
+
+    static constexpr size_t size() { return 2; }
 };
 
 template <typename T>
@@ -46,6 +48,8 @@ struct point<3, T> {
         : x(scalar)
         , y(scalar)
         , z(scalar) {}
+
+    static constexpr size_t size() { return 3; }
 };
 
 template <typename T>
@@ -68,6 +72,8 @@ struct point<4, T> {
         , y(scalar)
         , z(scalar)
         , w(scalar) {}
+
+    static constexpr size_t size() { return 4; }
 };
 
 typedef point<2, uint32_t> upt2;
