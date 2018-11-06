@@ -20,7 +20,7 @@ struct point<2, T> {
     };
 
     constexpr point()                   = default;
-    constexpr point(point<2, T>& const) = default;
+    constexpr point(point<2, T> const&) = default;
 
     constexpr explicit point(T scalar)
         : x(scalar)
@@ -40,7 +40,7 @@ struct point<3, T> {
     };
 
     constexpr point()                   = default;
-    constexpr point(point<3, T>& const) = default;
+    constexpr point(point<3, T> const&) = default;
 
     constexpr explicit point(T scalar)
         : x(scalar)
@@ -61,7 +61,7 @@ struct point<4, T> {
     };
 
     constexpr point()                   = default;
-    constexpr point(point<4, T>& const) = default;
+    constexpr point(point<4, T> const&) = default;
 
     constexpr explicit point(T scalar)
         : x(scalar)
