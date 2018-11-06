@@ -2,26 +2,44 @@
 #include <doctest.h>
 #include <rmath/point.hpp>
 
-TEST_CASE("upoint2 can be default constructed") {
-    auto pt = rmath::upt2();
+TEST_CASE("upoint2 can be constructed from scalar") {
+    std::vector<unsigned int> data {0, 1, 2, 30, 199};
 
-    CHECK(pt.x == 0);
-    CHECK(pt.y == 0);
+    for (auto& d : data) {
+        CAPTURE(d);
+
+        auto pt = rmath::upt2(d);
+
+        CHECK(pt.x == d);
+        CHECK(pt.y == d);
+    }
 }
 
-TEST_CASE("upoint3 can be default constructed") {
-    auto pt = rmath::upt3();
+TEST_CASE("upoint3 can be constructed from scalar") {
+    std::vector<unsigned int> data {0, 1, 2, 30, 199};
 
-    CHECK(pt.x == 0);
-    CHECK(pt.y == 0);
-    CHECK(pt.z == 0);
+    for (auto& d : data) {
+        CAPTURE(d);
+
+        auto pt = rmath::upt3(d);
+
+        CHECK(pt.x == d);
+        CHECK(pt.y == d);
+        CHECK(pt.z == d);
+    }
 }
 
-TEST_CASE("upoint4 can be default constructed") {
-    auto pt = rmath::upt4();
+TEST_CASE("upoint4 can be constructed from scalar") {
+    std::vector<unsigned int> data {0, 1, 2, 30, 199};
 
-    CHECK(pt.x == 0);
-    CHECK(pt.y == 0);
-    CHECK(pt.z == 0);
-    CHECK(pt.w == 0);
+    for (auto& d : data) {
+        CAPTURE(d);
+
+        auto pt = rmath::upt4(d);
+
+        CHECK(pt.x == d);
+        CHECK(pt.y == d);
+        CHECK(pt.z == d);
+        CHECK(pt.w == d);
+    }
 }

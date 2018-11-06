@@ -21,6 +21,10 @@ struct point<2, T> {
 
     constexpr point()                   = default;
     constexpr point(point<2, T>& const) = default;
+
+    constexpr explicit point(T scalar)
+        : x(scalar)
+        , y(scalar) {}
 };
 
 template <typename T>
@@ -37,6 +41,11 @@ struct point<3, T> {
 
     constexpr point()                   = default;
     constexpr point(point<3, T>& const) = default;
+
+    constexpr explicit point(T scalar)
+        : x(scalar)
+        , y(scalar)
+        , z(scalar) {}
 };
 
 template <typename T>
@@ -53,6 +62,12 @@ struct point<4, T> {
 
     constexpr point()                   = default;
     constexpr point(point<4, T>& const) = default;
+
+    constexpr explicit point(T scalar)
+        : x(scalar)
+        , y(scalar)
+        , z(scalar)
+        , w(scalar) {}
 };
 
 typedef point<2, unsigned int> upt2;
