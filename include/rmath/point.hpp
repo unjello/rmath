@@ -88,15 +88,13 @@ struct point<4, T> {
     static constexpr size_t size() { return 4; }
 };
 
-typedef point<2, uint32_t> upt2;
-typedef point<3, uint32_t> upt3;
-typedef point<4, uint32_t> upt4;
-
-typedef point<2, int32_t> ipt2;
-typedef point<3, int32_t> ipt3;
-typedef point<4, int32_t> ipt4;
-
-typedef point<2, float> pt2;
-typedef point<3, float> pt3;
-typedef point<4, float> pt4;
+using upt2 = point<2, uint32_t>;
+using upt3 = point<3, uint32_t>;
+using upt4 = point<4, uint32_t>;
+using ipt2 = point<2, int32_t>;
+using ipt3 = point<3, int32_t>;
+using ipt4 = point<4, int32_t>;
+using pt2  = point<2, float>;
+using pt3  = point<3, float>;
+using pt4  = point<4, float>;
 }
