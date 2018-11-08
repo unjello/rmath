@@ -25,6 +25,9 @@ struct point<2, T> {
     constexpr explicit point(T scalar)
         : x(scalar)
         , y(scalar) {}
+    constexpr point(T _x, T _y)
+        : x(_x)
+        , y(_y) {}
 
     static constexpr size_t size() { return 2; }
 };
@@ -48,6 +51,10 @@ struct point<3, T> {
         : x(scalar)
         , y(scalar)
         , z(scalar) {}
+    constexpr point(T _x, T _y, T _z)
+        : x(_x)
+        , y(_y)
+        , z(_z) {}
 
     static constexpr size_t size() { return 3; }
 };
@@ -72,6 +79,11 @@ struct point<4, T> {
         , y(scalar)
         , z(scalar)
         , w(scalar) {}
+    constexpr point(T _x, T _y, T _z, T _w)
+        : x(_x)
+        , y(_y)
+        , z(_z)
+        , w(_w) {}
 
     static constexpr size_t size() { return 4; }
 };
