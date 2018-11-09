@@ -25,4 +25,19 @@ using ivec4 = vector4<int32_t>;
 using vec2  = vector2<float>;
 using vec3  = vector3<float>;
 using vec4  = vector4<float>;
+
+template <typename T>
+const T length(vector2<T> const& v) {
+    return std::sqrt((v.x * v.x) + (v.y * v.y));
+}
+
+template <typename T>
+const T length(vector3<T> const& v) {
+    return std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
+}
+
+template <typename T>
+const T length(vector4<T> const& v) {
+    return std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w));
+}
 }
