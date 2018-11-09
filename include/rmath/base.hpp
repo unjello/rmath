@@ -39,6 +39,9 @@ struct base<3, T, Tag> {
         struct {
             T x, y, z;
         };
+        struct {
+            T r, g, b;
+        };
         T data[4];
     };
 
@@ -64,6 +67,9 @@ struct base<4, T, Tag> {
     union {
         struct {
             T x, y, z, w;
+        };
+        struct {
+            T r, g, b, a;
         };
         T data[4];
     };

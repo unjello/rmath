@@ -22,6 +22,9 @@ TEST_CASE("base data can be accessed") {
     CHECK(pt.data[0] == 99);
     CHECK(pt.data[1] == 98);
     CHECK(pt.data[2] == 99);
+    CHECK(pt.r == 99);
+    CHECK(pt.g == 98);
+    CHECK(pt.b == 99);
 }
 
 TEST_CASE("base data can be accessed") {
@@ -35,6 +38,10 @@ TEST_CASE("base data can be accessed") {
     CHECK(pt.data[1] == 98);
     CHECK(pt.data[2] == 99);
     CHECK(pt.data[3] == 97);
+    CHECK(pt.r == 99);
+    CHECK(pt.g == 98);
+    CHECK(pt.b == 99);
+    CHECK(pt.a == 97);
 }
 
 TEST_CASE("base data length matches") {
