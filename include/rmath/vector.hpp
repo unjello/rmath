@@ -40,4 +40,19 @@ template <typename T>
 const T length(vector4<T> const& v) {
     return std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w));
 }
+
+template <typename T>
+vector2<T> operator+(vector2<T> const& a, vector2<T> const& b) {
+    return vector2<T> {a.x + b.x, a.y + b.y};
+}
+
+template <typename T>
+vector3<T> operator+(vector3<T> const& a, vector3<T> const& b) {
+    return vector2<T> {a.x + b.x, a.y + b.y, a.z + b.z};
+}
+
+template <typename T>
+vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) {
+    return vector2<T> {a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w};
+}
 }
