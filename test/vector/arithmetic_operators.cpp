@@ -2,17 +2,22 @@
 #include <doctest.h>
 #include <rmath/vector.hpp>
 
-TEST_CASE("two uvec2's are added correctly") {
+TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
     rmath::uvec2 a {10, 20}, b {30, 10};
 
     auto c = a + b;
+    auto d = a - b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
     CHECK(b.x == 30);
     CHECK(b.y == 10);
+
     CHECK(c.x == 40);
     CHECK(c.y == 30);
+
+    CHECK(d.x == 4294967276); /* 2's complement -20 */
+    CHECK(d.y == 10);
 }
 
 TEST_CASE("two ivec3's are added correctly") {
