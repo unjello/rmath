@@ -28,16 +28,40 @@ using vec4  = vector4<float>;
 
 template <typename T>
 const T length(vector2<T> const& v) {
+    return std::round(std::sqrt((v.x * v.x) + (v.y * v.y)));
+}
+template <>
+const float length(vector2<float> const& v) {
+    return std::sqrt((v.x * v.x) + (v.y * v.y));
+}
+template <>
+const double length(vector2<double> const& v) {
     return std::sqrt((v.x * v.x) + (v.y * v.y));
 }
 
 template <typename T>
 const T length(vector3<T> const& v) {
+    return std::round(std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z)));
+}
+template <>
+const float length(vector3<float> const& v) {
+    return std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
+}
+template <>
+const double length(vector3<double> const& v) {
     return std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 }
 
 template <typename T>
 const T length(vector4<T> const& v) {
+    return std::round(std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w)));
+}
+template <>
+const float length(vector4<float> const& v) {
+    return std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w));
+}
+template <>
+const double length(vector4<double> const& v) {
     return std::sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w));
 }
 
