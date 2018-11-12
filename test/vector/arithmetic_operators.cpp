@@ -7,6 +7,8 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
 
     auto c = a + b;
     auto d = a - b;
+    auto e = a - 10;
+    auto f = 10 - b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
@@ -18,6 +20,12 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
 
     CHECK(d.x == 4294967276); /* 2's complement -20 */
     CHECK(d.y == 10);
+
+    CHECK(e.x == 0);
+    CHECK(e.y == 10);
+
+    CHECK(f.x == 4294967276);
+    CHECK(f.y == 0);
 }
 
 TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
@@ -25,6 +33,8 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
 
     auto c = a + b;
     auto d = a - b;
+    auto e = a - 10;
+    auto f = 10 - b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
@@ -40,6 +50,14 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
     CHECK(d.x == -20);
     CHECK(d.y == 10);
     CHECK(d.z == -70);
+
+    CHECK(e.x == 0);
+    CHECK(e.y == 10);
+    CHECK(e.z == -40);
+
+    CHECK(f.x == -20);
+    CHECK(f.y == 0);
+    CHECK(f.z == -30);
 }
 
 TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
@@ -47,6 +65,8 @@ TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
 
     auto c = a + b;
     auto d = a - b;
+    auto e = a - 10;
+    auto f = 10 - b;
 
     CHECK(a.x == doctest::Approx(10));
     CHECK(a.y == doctest::Approx(20));
@@ -66,4 +86,14 @@ TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
     CHECK(d.y == doctest::Approx(10));
     CHECK(d.z == doctest::Approx(0));
     CHECK(d.w == doctest::Approx(-30.88));
+
+    CHECK(e.x == doctest::Approx(0));
+    CHECK(e.y == doctest::Approx(10));
+    CHECK(e.z == doctest::Approx(-20.5));
+    CHECK(e.w == doctest::Approx(-30));
+
+    CHECK(f.x == doctest::Approx(-20));
+    CHECK(f.y == doctest::Approx(0));
+    CHECK(f.z == doctest::Approx(20.5));
+    CHECK(f.w == doctest::Approx(-0.88));
 }
