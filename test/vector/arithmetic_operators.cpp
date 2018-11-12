@@ -20,10 +20,11 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
     CHECK(d.y == 10);
 }
 
-TEST_CASE("two ivec3's are added correctly") {
+TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
     rmath::ivec3 a {10, 20, -30}, b {30, 10, 40};
 
     auto c = a + b;
+    auto d = a - b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
@@ -31,15 +32,21 @@ TEST_CASE("two ivec3's are added correctly") {
     CHECK(b.x == 30);
     CHECK(b.y == 10);
     CHECK(b.z == 40);
+
     CHECK(c.x == 40);
     CHECK(c.y == 30);
     CHECK(c.z == 10);
+
+    CHECK(d.x == -20);
+    CHECK(d.y == 10);
+    CHECK(d.z == -70);
 }
 
-TEST_CASE("two vec4's are added correctly") {
+TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
     rmath::vec4 a {10, 20, -10.5, -20}, b {30, 10, -10.5, 10.88};
 
     auto c = a + b;
+    auto d = a - b;
 
     CHECK(a.x == doctest::Approx(10));
     CHECK(a.y == doctest::Approx(20));
@@ -49,8 +56,14 @@ TEST_CASE("two vec4's are added correctly") {
     CHECK(b.y == doctest::Approx(10));
     CHECK(b.z == doctest::Approx(-10.5));
     CHECK(b.w == doctest::Approx(10.88));
+
     CHECK(c.x == doctest::Approx(40));
     CHECK(c.y == doctest::Approx(30));
     CHECK(c.z == doctest::Approx(-21));
     CHECK(c.w == doctest::Approx(-9.12));
+
+    CHECK(d.x == doctest::Approx(-20));
+    CHECK(d.y == doctest::Approx(10));
+    CHECK(d.z == doctest::Approx(0));
+    CHECK(d.w == doctest::Approx(-30.88));
 }
