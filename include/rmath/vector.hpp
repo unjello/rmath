@@ -55,31 +55,61 @@ const T length(vector4<T> const& v) {
 
 template <typename T>
 constexpr vector2<T> operator+(vector2<T> const& a, vector2<T> const& b) {
-    return vector2<T> {a.x + b.x, a.y + b.y};
+    return vector2<T>{a.x + b.x, a.y + b.y};
 }
 
 template <typename T>
 constexpr vector3<T> operator+(vector3<T> const& a, vector3<T> const& b) {
-    return vector3<T> {a.x + b.x, a.y + b.y, a.z + b.z};
+    return vector3<T>{a.x + b.x, a.y + b.y, a.z + b.z};
 }
 
 template <typename T>
 constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) {
-    return vector4<T> {a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w};
+    return vector4<T>{a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w};
 }
 
 template <typename T>
 constexpr vector2<T> operator-(vector2<T> const& a, vector2<T> const& b) {
-    return vector2<T> {a.x - b.x, a.y - b.y};
+    return vector2<T>{a.x - b.x, a.y - b.y};
 }
 
 template <typename T>
 constexpr vector3<T> operator-(vector3<T> const& a, vector3<T> const& b) {
-    return vector3<T> {a.x - b.x, a.y - b.y, a.z - b.z};
+    return vector3<T>{a.x - b.x, a.y - b.y, a.z - b.z};
 }
 
 template <typename T>
 constexpr vector4<T> operator-(vector4<T> const& a, vector4<T> const& b) {
-    return vector4<T> {a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w};
+    return vector4<T>{a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w};
+}
+
+template <typename T, typename U>
+constexpr vector2<T> operator-(vector2<T> const& a, U b) {
+    return vector2<T>{a.x - b, a.y - b};
+}
+
+template <typename T, typename U>
+constexpr vector3<T> operator-(vector3<T> const& a, U b) {
+    return vector3<T>{a.x - b, a.y - b, a.z - b};
+}
+
+template <typename T, typename U>
+constexpr vector4<T> operator-(vector4<T> const& a, U b) {
+    return vector4<T>{a.x - b, a.y - b, a.z - b, a.w - b};
+}
+
+template <typename T, typename U>
+constexpr vector2<T> operator-(U a, vector2<T> const& b) {
+    return vector2<T>{a - b.x, a - b.y};
+}
+
+template <typename T, typename U>
+constexpr vector3<T> operator-(U a, vector3<T> const& b) {
+    return vector3<T>{a - b.x, a - b.y, a - b.z};
+}
+
+template <typename T, typename U>
+constexpr vector4<T> operator-(U a, vector4<T> const& b) {
+    return vector4<T>{a - b.x, a - b.y, a - b.z, a - b.w};
 }
 }
