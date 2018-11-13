@@ -53,6 +53,14 @@ const T length(vector4<T> const& v) {
     }
 }
 
+/** @defgroup airthmetic-operators */
+
+/**
+ * @defgroup vector-plus-vector
+ * @ingroup airthmetic-operators
+ * @brief addition of two vectors
+ * @{
+ */
 template <typename T>
 constexpr vector2<T> operator+(vector2<T> const& a, vector2<T> const& b) {
     return vector2<T> {a.x + b.x, a.y + b.y};
@@ -67,7 +75,14 @@ template <typename T>
 constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) {
     return vector4<T> {a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w};
 }
+/** @} */
 
+/**
+ * @defgroup vector-minus-vector
+ * @ingroup airthmetic-operators
+ * @brief substraction of two vectors
+ * @{
+ */
 template <typename T>
 constexpr vector2<T> operator-(vector2<T> const& a, vector2<T> const& b) {
     return vector2<T> {a.x - b.x, a.y - b.y};
@@ -82,7 +97,14 @@ template <typename T>
 constexpr vector4<T> operator-(vector4<T> const& a, vector4<T> const& b) {
     return vector4<T> {a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w};
 }
+/** @} */
 
+/**
+ * @defgroup vector-minus-scalar
+ * @ingroup airthmetic-operators
+ * @brief substraction of vector and scalar
+ * @{
+ */
 template <typename T, typename U>
 constexpr vector2<T> operator-(vector2<T> const& a, U b) {
     return vector2<T> {a.x - b, a.y - b};
@@ -112,7 +134,14 @@ template <typename T, typename U>
 constexpr vector4<T> operator-(U a, vector4<T> const& b) {
     return vector4<T> {a - b.x, a - b.y, a - b.z, a - b.w};
 }
+/** @} */
 
+/**
+ * @defgroup vector-mul-scalar
+ * @ingroup airthmetic-operators
+ * @brief multiplication of vector and scalar
+ * @{
+ */
 template <typename T, typename U>
 constexpr vector2<T> operator*(vector2<T> const& a, U b) {
     return vector2<T> {a.x * b, a.y * b};
@@ -142,4 +171,42 @@ template <typename T, typename U>
 constexpr vector4<T> operator*(U a, vector4<T> const& b) {
     return vector4<T> {a * b.x, a * b.y, a * b.z, a * b.w};
 }
+/** @} */
+
+/**
+ * @defgroup vector-div-scalar
+ * @ingroup airthmetic-operators
+ * @brief division of vector and scalar
+ * @{
+ */
+template <typename T, typename U>
+constexpr vector2<T> operator/(vector2<T> const& a, U b) {
+    return vector2<T> {a.x / b, a.y / b};
+}
+
+template <typename T, typename U>
+constexpr vector3<T> operator/(vector3<T> const& a, U b) {
+    return vector3<T> {a.x / b, a.y / b, a.z / b};
+}
+
+template <typename T, typename U>
+constexpr vector4<T> operator/(vector4<T> const& a, U b) {
+    return vector4<T> {a.x / b, a.y / b, a.z / b, a.w / b};
+}
+
+template <typename T, typename U>
+constexpr vector2<T> operator/(U a, vector2<T> const& b) {
+    return vector2<T> {a / b.x, a / b.y};
+}
+
+template <typename T, typename U>
+constexpr vector3<T> operator/(U a, vector3<T> const& b) {
+    return vector3<T> {a / b.x, a / b.y, a / b.z};
+}
+
+template <typename T, typename U>
+constexpr vector4<T> operator/(U a, vector4<T> const& b) {
+    return vector4<T> {a / b.x, a / b.y, a / b.z, a / b.w};
+}
+/** @} */
 }
