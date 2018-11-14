@@ -90,4 +90,153 @@ struct base<4, T, Tag> {
 
     static constexpr size_t size() { return 4; }
 };
+
+/**
+ * @defgroup vector-plus-scalar
+ * @ingroup airthmetic-operators
+ * @brief addition of vector and scalar
+ * @{
+ */
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator+(base<2, T, Tag> const& a, U b) noexcept {
+    return base<2, T, Tag> {a.x + b, a.y + b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator+(base<3, T, Tag> const& a, U b) noexcept {
+    return base<3, T, Tag> {a.x + b, a.y + b, a.z + b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator+(base<4, T, Tag> const& a, U b) noexcept {
+    return base<4, T, Tag> {a.x + b, a.y + b, a.z + b, a.w + b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator+(U a, base<2, T, Tag> const& b) noexcept {
+    return base<2, T, Tag> {a + b.x, a + b.y};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator+(U a, base<3, T, Tag> const& b) noexcept {
+    return base<3, T, Tag> {a + b.x, a + b.y, a + b.z};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator+(U a, base<4, T, Tag> const& b) noexcept {
+    return base<4, T, Tag> {a + b.x, a + b.y, a + b.z, a + b.w};
+}
+/** @} */
+
+/**
+ * @defgroup vector-minus-scalar
+ * @ingroup airthmetic-operators
+ * @brief substraction of vector and scalar
+ * @{
+ */
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator-(base<2, T, Tag> const& a, U b) noexcept {
+    return base<2, T, Tag> {a.x - b, a.y - b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator-(base<3, T, Tag> const& a, U b) noexcept {
+    return base<3, T, Tag> {a.x - b, a.y - b, a.z - b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator-(base<4, T, Tag> const& a, U b) noexcept {
+    return base<4, T, Tag> {a.x - b, a.y - b, a.z - b, a.w - b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator-(U a, base<2, T, Tag> const& b) noexcept {
+    return base<2, T, Tag> {a - b.x, a - b.y};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator-(U a, base<3, T, Tag> const& b) noexcept {
+    return base<3, T, Tag> {a - b.x, a - b.y, a - b.z};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator-(U a, base<4, T, Tag> const& b) noexcept {
+    return base<4, T, Tag> {a - b.x, a - b.y, a - b.z, a - b.w};
+}
+/** @} */
+
+/**
+ * @defgroup vector-mul-scalar
+ * @ingroup airthmetic-operators
+ * @brief multiplication of vector and scalar
+ * @{
+ */
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator*(base<2, T, Tag> const& a, U b) noexcept {
+    return base<2, T, Tag> {a.x * b, a.y * b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator*(base<3, T, Tag> const& a, U b) noexcept {
+    return base<3, T, Tag> {a.x * b, a.y * b, a.z * b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator*(base<4, T, Tag> const& a, U b) noexcept {
+    return base<4, T, Tag> {a.x * b, a.y * b, a.z * b, a.w * b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator*(U a, base<2, T, Tag> const& b) noexcept {
+    return base<2, T, Tag> {a * b.x, a * b.y};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator*(U a, base<3, T, Tag> const& b) noexcept {
+    return base<3, T, Tag> {a * b.x, a * b.y, a * b.z};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator*(U a, base<4, T, Tag> const& b) noexcept {
+    return base<4, T, Tag> {a * b.x, a * b.y, a * b.z, a * b.w};
+}
+/** @} */
+
+/**
+ * @defgroup vector-div-scalar
+ * @ingroup airthmetic-operators
+ * @brief division of vector and scalar. It's marked as noexcept since division
+ *        by zero is not an exception in standard C++.
+ * @{
+ */
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator/(base<2, T, Tag> const& a, U b) noexcept {
+    return base<2, T, Tag> {a.x / b, a.y / b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator/(base<3, T, Tag> const& a, U b) noexcept {
+    return base<3, T, Tag> {a.x / b, a.y / b, a.z / b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator/(base<4, T, Tag> const& a, U b) noexcept {
+    return base<4, T, Tag> {a.x / b, a.y / b, a.z / b, a.w / b};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<2, T, Tag> operator/(U a, base<2, T, Tag> const& b) noexcept {
+    return base<2, T, Tag> {a / b.x, a / b.y};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<3, T, Tag> operator/(U a, base<3, T, Tag> const& b) noexcept {
+    return base<3, T, Tag> {a / b.x, a / b.y, a / b.z};
+}
+
+template <typename T, typename U, typename Tag>
+constexpr base<4, T, Tag> operator/(U a, base<4, T, Tag> const& b) noexcept {
+    return base<4, T, Tag> {a / b.x, a / b.y, a / b.z, a / b.w};
+}
+/** @} */
 }

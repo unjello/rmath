@@ -54,12 +54,10 @@ const T length(vector4<T> const& v) {
     }
 }
 
-/** @defgroup airthmetic-operators */
-
 /**
- * @defgroup vector-plus-vector
- * @ingroup airthmetic-operators
- * @brief addition of two vectors
+ * @defgroup point-operators
+ * @ingroup euclidean-operators
+ * @brief adding and substracting points and vectors (directions)
  * @{
  */
 template <typename T>
@@ -76,51 +74,7 @@ template <typename T>
 constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) noexcept {
     return vector4<T> {a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w};
 }
-/** @} */
 
-/**
- * @defgroup vector-plus-scalar
- * @ingroup airthmetic-operators
- * @brief addition of vector and scalar
- * @{
- */
-template <typename T, typename U>
-constexpr vector2<T> operator+(vector2<T> const& a, U b) noexcept {
-    return vector2<T> {a.x + b, a.y + b};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator+(vector3<T> const& a, U b) noexcept {
-    return vector3<T> {a.x + b, a.y + b, a.z + b};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator+(vector4<T> const& a, U b) noexcept {
-    return vector4<T> {a.x + b, a.y + b, a.z + b, a.w + b};
-}
-
-template <typename T, typename U>
-constexpr vector2<T> operator+(U a, vector2<T> const& b) noexcept {
-    return vector2<T> {a + b.x, a + b.y};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator+(U a, vector3<T> const& b) noexcept {
-    return vector3<T> {a + b.x, a + b.y, a + b.z};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator+(U a, vector4<T> const& b) noexcept {
-    return vector4<T> {a + b.x, a + b.y, a + b.z, a + b.w};
-}
-/** @} */
-
-/**
- * @defgroup vector-minus-vector
- * @ingroup airthmetic-operators
- * @brief substraction of two vectors
- * @{
- */
 template <typename T>
 constexpr vector2<T> operator-(vector2<T> const& a, vector2<T> const& b) noexcept {
     return vector2<T> {a.x - b.x, a.y - b.y};
@@ -135,126 +89,7 @@ template <typename T>
 constexpr vector4<T> operator-(vector4<T> const& a, vector4<T> const& b) noexcept {
     return vector4<T> {a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w};
 }
-/** @} */
 
-/**
- * @defgroup vector-minus-scalar
- * @ingroup airthmetic-operators
- * @brief substraction of vector and scalar
- * @{
- */
-template <typename T, typename U>
-constexpr vector2<T> operator-(vector2<T> const& a, U b) noexcept {
-    return vector2<T> {a.x - b, a.y - b};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator-(vector3<T> const& a, U b) noexcept {
-    return vector3<T> {a.x - b, a.y - b, a.z - b};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator-(vector4<T> const& a, U b) noexcept {
-    return vector4<T> {a.x - b, a.y - b, a.z - b, a.w - b};
-}
-
-template <typename T, typename U>
-constexpr vector2<T> operator-(U a, vector2<T> const& b) noexcept {
-    return vector2<T> {a - b.x, a - b.y};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator-(U a, vector3<T> const& b) noexcept {
-    return vector3<T> {a - b.x, a - b.y, a - b.z};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator-(U a, vector4<T> const& b) noexcept {
-    return vector4<T> {a - b.x, a - b.y, a - b.z, a - b.w};
-}
-/** @} */
-
-/**
- * @defgroup vector-mul-scalar
- * @ingroup airthmetic-operators
- * @brief multiplication of vector and scalar
- * @{
- */
-template <typename T, typename U>
-constexpr vector2<T> operator*(vector2<T> const& a, U b) noexcept {
-    return vector2<T> {a.x * b, a.y * b};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator*(vector3<T> const& a, U b) noexcept {
-    return vector3<T> {a.x * b, a.y * b, a.z * b};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator*(vector4<T> const& a, U b) noexcept {
-    return vector4<T> {a.x * b, a.y * b, a.z * b, a.w * b};
-}
-
-template <typename T, typename U>
-constexpr vector2<T> operator*(U a, vector2<T> const& b) noexcept {
-    return vector2<T> {a * b.x, a * b.y};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator*(U a, vector3<T> const& b) noexcept {
-    return vector3<T> {a * b.x, a * b.y, a * b.z};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator*(U a, vector4<T> const& b) noexcept {
-    return vector4<T> {a * b.x, a * b.y, a * b.z, a * b.w};
-}
-/** @} */
-
-/**
- * @defgroup vector-div-scalar
- * @ingroup airthmetic-operators
- * @brief division of vector and scalar. It's marked as noexcept since division
- *        by zero is not an exception in standard C++.
- * @{
- */
-template <typename T, typename U>
-constexpr vector2<T> operator/(vector2<T> const& a, U b) noexcept {
-    return vector2<T> {a.x / b, a.y / b};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator/(vector3<T> const& a, U b) noexcept {
-    return vector3<T> {a.x / b, a.y / b, a.z / b};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator/(vector4<T> const& a, U b) noexcept {
-    return vector4<T> {a.x / b, a.y / b, a.z / b, a.w / b};
-}
-
-template <typename T, typename U>
-constexpr vector2<T> operator/(U a, vector2<T> const& b) noexcept {
-    return vector2<T> {a / b.x, a / b.y};
-}
-
-template <typename T, typename U>
-constexpr vector3<T> operator/(U a, vector3<T> const& b) noexcept {
-    return vector3<T> {a / b.x, a / b.y, a / b.z};
-}
-
-template <typename T, typename U>
-constexpr vector4<T> operator/(U a, vector4<T> const& b) noexcept {
-    return vector4<T> {a / b.x, a / b.y, a / b.z, a / b.w};
-}
-/** @} */
-
-/**
- * @defgroup point-operators
- * @ingroup euclidean-operators
- * @brief adding and substracting points and vectors (directions)
- * @{
- */
 template <typename T>
 constexpr point2<T> operator+(point2<T> const& a, vector2<T> const& b) noexcept {
     return point2<T> {a.x + b.x, a.y + b.y};
@@ -296,6 +131,5 @@ template <typename T>
 constexpr vector4<T> operator-(point4<T> const& a, point4<T> const& b) noexcept {
     return vector4<T> {a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w};
 }
-
 /** @} */
 }
