@@ -92,9 +92,9 @@ struct base<4, T, Tag> {
 };
 
 /**
- * @defgroup vector-plus-scalar
+ * @defgroup plus-scalar
  * @ingroup airthmetic-operators
- * @brief addition of vector and scalar
+ * @brief addition of vector/point/etc and scalar
  * @{
  */
 template <typename T, typename U, typename Tag>
@@ -129,9 +129,9 @@ constexpr base<4, T, Tag> operator+(U a, base<4, T, Tag> const& b) noexcept {
 /** @} */
 
 /**
- * @defgroup vector-minus-scalar
+ * @defgroup minus-scalar
  * @ingroup airthmetic-operators
- * @brief substraction of vector and scalar
+ * @brief substraction of vector/point/etc and scalar
  * @{
  */
 template <typename T, typename U, typename Tag>
@@ -166,9 +166,9 @@ constexpr base<4, T, Tag> operator-(U a, base<4, T, Tag> const& b) noexcept {
 /** @} */
 
 /**
- * @defgroup vector-mul-scalar
+ * @defgroup mul-scalar
  * @ingroup airthmetic-operators
- * @brief multiplication of vector and scalar
+ * @brief multiplication of vector/point/etc and scalar
  * @{
  */
 template <typename T, typename U, typename Tag>
@@ -203,10 +203,10 @@ constexpr base<4, T, Tag> operator*(U a, base<4, T, Tag> const& b) noexcept {
 /** @} */
 
 /**
- * @defgroup vector-div-scalar
+ * @defgroup div-scalar
  * @ingroup airthmetic-operators
- * @brief division of vector and scalar. It's marked as noexcept since division
- *        by zero is not an exception in standard C++.
+ * @brief division of vector/point/etc and scalar. It's marked as noexcept
+ *        since division by zero is not an exception in standard C++.
  * @{
  */
 template <typename T, typename U, typename Tag>
