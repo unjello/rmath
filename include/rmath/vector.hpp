@@ -62,17 +62,17 @@ const T length(vector4<T> const& v) {
  * @{
  */
 template <typename T>
-constexpr vector2<T> operator+(vector2<T> const& a, vector2<T> const& b) {
+constexpr vector2<T> operator+(vector2<T> const& a, vector2<T> const& b) noexcept {
     return vector2<T> {a.x + b.x, a.y + b.y};
 }
 
 template <typename T>
-constexpr vector3<T> operator+(vector3<T> const& a, vector3<T> const& b) {
+constexpr vector3<T> operator+(vector3<T> const& a, vector3<T> const& b) noexcept {
     return vector3<T> {a.x + b.x, a.y + b.y, a.z + b.z};
 }
 
 template <typename T>
-constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) {
+constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) noexcept {
     return vector4<T> {a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w};
 }
 /** @} */
@@ -84,32 +84,32 @@ constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) {
  * @{
  */
 template <typename T, typename U>
-constexpr vector2<T> operator+(vector2<T> const& a, U b) {
+constexpr vector2<T> operator+(vector2<T> const& a, U b) noexcept {
     return vector2<T> {a.x + b, a.y + b};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator+(vector3<T> const& a, U b) {
+constexpr vector3<T> operator+(vector3<T> const& a, U b) noexcept {
     return vector3<T> {a.x + b, a.y + b, a.z + b};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator+(vector4<T> const& a, U b) {
+constexpr vector4<T> operator+(vector4<T> const& a, U b) noexcept {
     return vector4<T> {a.x + b, a.y + b, a.z + b, a.w + b};
 }
 
 template <typename T, typename U>
-constexpr vector2<T> operator+(U a, vector2<T> const& b) {
+constexpr vector2<T> operator+(U a, vector2<T> const& b) noexcept {
     return vector2<T> {a + b.x, a + b.y};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator+(U a, vector3<T> const& b) {
+constexpr vector3<T> operator+(U a, vector3<T> const& b) noexcept {
     return vector3<T> {a + b.x, a + b.y, a + b.z};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator+(U a, vector4<T> const& b) {
+constexpr vector4<T> operator+(U a, vector4<T> const& b) noexcept {
     return vector4<T> {a + b.x, a + b.y, a + b.z, a + b.w};
 }
 /** @} */
@@ -121,17 +121,17 @@ constexpr vector4<T> operator+(U a, vector4<T> const& b) {
  * @{
  */
 template <typename T>
-constexpr vector2<T> operator-(vector2<T> const& a, vector2<T> const& b) {
+constexpr vector2<T> operator-(vector2<T> const& a, vector2<T> const& b) noexcept {
     return vector2<T> {a.x - b.x, a.y - b.y};
 }
 
 template <typename T>
-constexpr vector3<T> operator-(vector3<T> const& a, vector3<T> const& b) {
+constexpr vector3<T> operator-(vector3<T> const& a, vector3<T> const& b) noexcept {
     return vector3<T> {a.x - b.x, a.y - b.y, a.z - b.z};
 }
 
 template <typename T>
-constexpr vector4<T> operator-(vector4<T> const& a, vector4<T> const& b) {
+constexpr vector4<T> operator-(vector4<T> const& a, vector4<T> const& b) noexcept {
     return vector4<T> {a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w};
 }
 /** @} */
@@ -143,32 +143,32 @@ constexpr vector4<T> operator-(vector4<T> const& a, vector4<T> const& b) {
  * @{
  */
 template <typename T, typename U>
-constexpr vector2<T> operator-(vector2<T> const& a, U b) {
+constexpr vector2<T> operator-(vector2<T> const& a, U b) noexcept {
     return vector2<T> {a.x - b, a.y - b};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator-(vector3<T> const& a, U b) {
+constexpr vector3<T> operator-(vector3<T> const& a, U b) noexcept {
     return vector3<T> {a.x - b, a.y - b, a.z - b};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator-(vector4<T> const& a, U b) {
+constexpr vector4<T> operator-(vector4<T> const& a, U b) noexcept {
     return vector4<T> {a.x - b, a.y - b, a.z - b, a.w - b};
 }
 
 template <typename T, typename U>
-constexpr vector2<T> operator-(U a, vector2<T> const& b) {
+constexpr vector2<T> operator-(U a, vector2<T> const& b) noexcept {
     return vector2<T> {a - b.x, a - b.y};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator-(U a, vector3<T> const& b) {
+constexpr vector3<T> operator-(U a, vector3<T> const& b) noexcept {
     return vector3<T> {a - b.x, a - b.y, a - b.z};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator-(U a, vector4<T> const& b) {
+constexpr vector4<T> operator-(U a, vector4<T> const& b) noexcept {
     return vector4<T> {a - b.x, a - b.y, a - b.z, a - b.w};
 }
 /** @} */
@@ -180,32 +180,32 @@ constexpr vector4<T> operator-(U a, vector4<T> const& b) {
  * @{
  */
 template <typename T, typename U>
-constexpr vector2<T> operator*(vector2<T> const& a, U b) {
+constexpr vector2<T> operator*(vector2<T> const& a, U b) noexcept {
     return vector2<T> {a.x * b, a.y * b};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator*(vector3<T> const& a, U b) {
+constexpr vector3<T> operator*(vector3<T> const& a, U b) noexcept {
     return vector3<T> {a.x * b, a.y * b, a.z * b};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator*(vector4<T> const& a, U b) {
+constexpr vector4<T> operator*(vector4<T> const& a, U b) noexcept {
     return vector4<T> {a.x * b, a.y * b, a.z * b, a.w * b};
 }
 
 template <typename T, typename U>
-constexpr vector2<T> operator*(U a, vector2<T> const& b) {
+constexpr vector2<T> operator*(U a, vector2<T> const& b) noexcept {
     return vector2<T> {a * b.x, a * b.y};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator*(U a, vector3<T> const& b) {
+constexpr vector3<T> operator*(U a, vector3<T> const& b) noexcept {
     return vector3<T> {a * b.x, a * b.y, a * b.z};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator*(U a, vector4<T> const& b) {
+constexpr vector4<T> operator*(U a, vector4<T> const& b) noexcept {
     return vector4<T> {a * b.x, a * b.y, a * b.z, a * b.w};
 }
 /** @} */
@@ -213,36 +213,37 @@ constexpr vector4<T> operator*(U a, vector4<T> const& b) {
 /**
  * @defgroup vector-div-scalar
  * @ingroup airthmetic-operators
- * @brief division of vector and scalar
+ * @brief division of vector and scalar. It's marked as noexcept since division
+ *        by zero is not an exception in standard C++.
  * @{
  */
 template <typename T, typename U>
-constexpr vector2<T> operator/(vector2<T> const& a, U b) {
+constexpr vector2<T> operator/(vector2<T> const& a, U b) noexcept {
     return vector2<T> {a.x / b, a.y / b};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator/(vector3<T> const& a, U b) {
+constexpr vector3<T> operator/(vector3<T> const& a, U b) noexcept {
     return vector3<T> {a.x / b, a.y / b, a.z / b};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator/(vector4<T> const& a, U b) {
+constexpr vector4<T> operator/(vector4<T> const& a, U b) noexcept {
     return vector4<T> {a.x / b, a.y / b, a.z / b, a.w / b};
 }
 
 template <typename T, typename U>
-constexpr vector2<T> operator/(U a, vector2<T> const& b) {
+constexpr vector2<T> operator/(U a, vector2<T> const& b) noexcept {
     return vector2<T> {a / b.x, a / b.y};
 }
 
 template <typename T, typename U>
-constexpr vector3<T> operator/(U a, vector3<T> const& b) {
+constexpr vector3<T> operator/(U a, vector3<T> const& b) noexcept {
     return vector3<T> {a / b.x, a / b.y, a / b.z};
 }
 
 template <typename T, typename U>
-constexpr vector4<T> operator/(U a, vector4<T> const& b) {
+constexpr vector4<T> operator/(U a, vector4<T> const& b) noexcept {
     return vector4<T> {a / b.x, a / b.y, a / b.z, a / b.w};
 }
 /** @} */
