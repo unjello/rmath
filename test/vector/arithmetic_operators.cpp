@@ -11,6 +11,8 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
     auto f = 10 - b;
     auto g = a * 10;
     auto h = 20 * b;
+    auto i = a + 10;
+    auto j = 20 + b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
@@ -34,6 +36,11 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
 
     CHECK(h.x == 600);
     CHECK(h.y == 200);
+
+    CHECK(i.x == 20);
+    CHECK(i.y == 30);
+    CHECK(j.x == 50);
+    CHECK(j.y == 30);
 }
 
 TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
@@ -45,6 +52,8 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
     auto f = 10 - b;
     auto g = a * 10;
     auto h = -20 * b;
+    auto i = a + 10;
+    auto j = -20 + b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
@@ -76,6 +85,14 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
     CHECK(h.x == -600);
     CHECK(h.y == -200);
     CHECK(h.z == -800);
+
+    CHECK(i.x == 20);
+    CHECK(i.y == 30);
+    CHECK(i.z == -20);
+
+    CHECK(j.x == 10);
+    CHECK(j.y == -10);
+    CHECK(j.z == 20);
 }
 
 TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
@@ -87,6 +104,8 @@ TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
     auto f = 10 - b;
     auto g = a * 10;
     auto h = 20.5f * b;
+    auto i = a + 10;
+    auto j = -20.5f + b;
 
     CHECK(a.x == doctest::Approx(10));
     CHECK(a.y == doctest::Approx(20));
@@ -126,4 +145,14 @@ TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
     CHECK(h.y == doctest::Approx(205));
     CHECK(h.z == doctest::Approx(-215.25));
     CHECK(h.w == doctest::Approx(223.04));
+
+    CHECK(i.x == doctest::Approx(20));
+    CHECK(i.y == doctest::Approx(30));
+    CHECK(i.z == doctest::Approx(-0.5));
+    CHECK(i.w == doctest::Approx(-10));
+
+    CHECK(j.x == doctest::Approx(9.5));
+    CHECK(j.y == doctest::Approx(-10.5));
+    CHECK(j.z == doctest::Approx(-31));
+    CHECK(j.w == doctest::Approx(-9.62));
 }
