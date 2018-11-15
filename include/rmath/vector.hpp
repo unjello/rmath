@@ -132,4 +132,46 @@ constexpr vector4<T> operator-(point4<T> const& a, point4<T> const& b) noexcept 
     return vector4<T> {a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w};
 }
 /** @} */
+
+template <class T>
+const T distance(vector2<T> const& a, vector2<T> const& b) noexcept {
+    if constexpr (std::is_integral<T>::value) {
+        return std::round(std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)));
+    } else {
+        return std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+    }
+}
+template <class T>
+const T distance(vector3<T> const& a, vector3<T> const& b) noexcept {
+    if constexpr (std::is_integral<T>::value) {
+        return std::round(std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+                                    + (a.z - b.z) * (a.z - b.z)));
+    } else {
+        return std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+                         + (a.z - b.z) * (a.z - b.z));
+    }
+}
+template <class T>
+const T distance(vector4<T> const& a, vector4<T> const& b) noexcept {
+    if constexpr (std::is_integral<T>::value) {
+        return std::round(std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+                                    + (a.z - b.z) * (a.z - b.z) + (a.w - b.w)));
+    } else {
+        return std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)
+                         + (a.z - b.z) * (a.z - b.z) + (a.w - b.w) * (a.w - b.w));
+    }
+}
+template <class T>
+constexpr T distance_sq(vector2<T> const& a, vector2<T> const& b) noexcept {
+    return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+}
+template <class T>
+constexpr T distance_sq(vector3<T> const& a, vector3<T> const& b) noexcept {
+    return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) + (a.z - b.z) * (a.z - b.z);
+}
+template <class T>
+constexpr T distance_sq(vector4<T> const& a, vector4<T> const& b) noexcept {
+    return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) + (a.z - b.z) * (a.z - b.z)
+        + (a.w - b.w) * (a.w - b.w);
+}
 }
