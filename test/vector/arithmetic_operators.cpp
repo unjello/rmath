@@ -7,12 +7,6 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
 
     auto c = a + b;
     auto d = a - b;
-    auto e = a - 10;
-    auto f = 10 - b;
-    auto g = a * 10;
-    auto h = 20 * b;
-    auto i = a + 10;
-    auto j = 20 + b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
@@ -24,23 +18,6 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
 
     CHECK(d.x == 4294967276); /* 2's complement -20 */
     CHECK(d.y == 10);
-
-    CHECK(e.x == 0);
-    CHECK(e.y == 10);
-
-    CHECK(f.x == 4294967276);
-    CHECK(f.y == 0);
-
-    CHECK(g.x == 100);
-    CHECK(g.y == 200);
-
-    CHECK(h.x == 600);
-    CHECK(h.y == 200);
-
-    CHECK(i.x == 20);
-    CHECK(i.y == 30);
-    CHECK(j.x == 50);
-    CHECK(j.y == 30);
 }
 
 TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
@@ -48,12 +25,6 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
 
     auto c = a + b;
     auto d = a - b;
-    auto e = a - 10;
-    auto f = 10 - b;
-    auto g = a * 10;
-    auto h = -20 * b;
-    auto i = a + 10;
-    auto j = -20 + b;
 
     CHECK(a.x == 10);
     CHECK(a.y == 20);
@@ -69,30 +40,6 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
     CHECK(d.x == -20);
     CHECK(d.y == 10);
     CHECK(d.z == -70);
-
-    CHECK(e.x == 0);
-    CHECK(e.y == 10);
-    CHECK(e.z == -40);
-
-    CHECK(f.x == -20);
-    CHECK(f.y == 0);
-    CHECK(f.z == -30);
-
-    CHECK(g.x == 100);
-    CHECK(g.y == 200);
-    CHECK(g.z == -300);
-
-    CHECK(h.x == -600);
-    CHECK(h.y == -200);
-    CHECK(h.z == -800);
-
-    CHECK(i.x == 20);
-    CHECK(i.y == 30);
-    CHECK(i.z == -20);
-
-    CHECK(j.x == 10);
-    CHECK(j.y == -10);
-    CHECK(j.z == 20);
 }
 
 TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
@@ -100,12 +47,6 @@ TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
 
     auto c = a + b;
     auto d = a - b;
-    auto e = a - 10;
-    auto f = 10 - b;
-    auto g = a * 10;
-    auto h = 20.5f * b;
-    auto i = a + 10;
-    auto j = -20.5f + b;
 
     CHECK(a.x == doctest::Approx(10));
     CHECK(a.y == doctest::Approx(20));
@@ -125,34 +66,4 @@ TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
     CHECK(d.y == doctest::Approx(10));
     CHECK(d.z == doctest::Approx(0));
     CHECK(d.w == doctest::Approx(-30.88));
-
-    CHECK(e.x == doctest::Approx(0));
-    CHECK(e.y == doctest::Approx(10));
-    CHECK(e.z == doctest::Approx(-20.5));
-    CHECK(e.w == doctest::Approx(-30));
-
-    CHECK(f.x == doctest::Approx(-20));
-    CHECK(f.y == doctest::Approx(0));
-    CHECK(f.z == doctest::Approx(20.5));
-    CHECK(f.w == doctest::Approx(-0.88));
-
-    CHECK(g.x == doctest::Approx(100));
-    CHECK(g.y == doctest::Approx(200));
-    CHECK(g.z == doctest::Approx(-105));
-    CHECK(g.w == doctest::Approx(-200));
-
-    CHECK(h.x == doctest::Approx(615));
-    CHECK(h.y == doctest::Approx(205));
-    CHECK(h.z == doctest::Approx(-215.25));
-    CHECK(h.w == doctest::Approx(223.04));
-
-    CHECK(i.x == doctest::Approx(20));
-    CHECK(i.y == doctest::Approx(30));
-    CHECK(i.z == doctest::Approx(-0.5));
-    CHECK(i.w == doctest::Approx(-10));
-
-    CHECK(j.x == doctest::Approx(9.5));
-    CHECK(j.y == doctest::Approx(-10.5));
-    CHECK(j.z == doctest::Approx(-31));
-    CHECK(j.w == doctest::Approx(-9.62));
 }
