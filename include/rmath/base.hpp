@@ -1,6 +1,7 @@
 #pragma once
 #include <cstddef>
 #include <cstdint>
+#include <utility>
 
 namespace rmath {
 
@@ -91,40 +92,44 @@ struct base<4, T, Tag> {
     static constexpr size_t size() { return 4; }
 };
 
+namespace detail {
+template <size_t L, typename T, typename U, typename Tag, typename F>
+constexpr base<L, T, Tag> op_binary(base<L, T, Tag> const& a, U b, F f) {
+    return op_binary(a, b, f, std::make_integer_sequence<size_t, L>());
+}
+
+template <size_t L, typename T, typename U, typename Tag, typename F, size_t... i>
+constexpr base<L, T, Tag>
+op_binary(base<L, T, Tag> const& a, U b, F f, std::integer_sequence<size_t, i...>) {
+    return base<L, T, Tag> {f(a.data[i], b)...};
+}
+
+template <size_t L, typename T, typename U, typename Tag, typename F>
+constexpr base<L, T, Tag> op_binary(U a, base<L, T, Tag> const& b, F f) {
+    return op_binary(a, b, f, std::make_integer_sequence<size_t, L>());
+}
+
+template <size_t L, typename T, typename U, typename Tag, typename F, size_t... i>
+constexpr base<L, T, Tag>
+op_binary(U a, base<L, T, Tag> const& b, F f, std::integer_sequence<size_t, i...>) {
+    return base<L, T, Tag> {f(a, b.data[i])...};
+}
+}
+
 /**
  * @defgroup plus-scalar
  * @ingroup airthmetic-operators
  * @brief addition of vector/point/etc and scalar
  * @{
  */
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator+(base<2, T, Tag> const& a, U b) noexcept {
-    return base<2, T, Tag> {a.x + b, a.y + b};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator+(base<L, T, Tag> const& a, U b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 + _2; });
 }
 
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator+(base<3, T, Tag> const& a, U b) noexcept {
-    return base<3, T, Tag> {a.x + b, a.y + b, a.z + b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator+(base<4, T, Tag> const& a, U b) noexcept {
-    return base<4, T, Tag> {a.x + b, a.y + b, a.z + b, a.w + b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator+(U a, base<2, T, Tag> const& b) noexcept {
-    return base<2, T, Tag> {a + b.x, a + b.y};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator+(U a, base<3, T, Tag> const& b) noexcept {
-    return base<3, T, Tag> {a + b.x, a + b.y, a + b.z};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator+(U a, base<4, T, Tag> const& b) noexcept {
-    return base<4, T, Tag> {a + b.x, a + b.y, a + b.z, a + b.w};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator+(U a, base<L, T, Tag> const& b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 + _2; });
 }
 /** @} */
 
@@ -134,34 +139,14 @@ constexpr base<4, T, Tag> operator+(U a, base<4, T, Tag> const& b) noexcept {
  * @brief substraction of vector/point/etc and scalar
  * @{
  */
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator-(base<2, T, Tag> const& a, U b) noexcept {
-    return base<2, T, Tag> {a.x - b, a.y - b};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator-(base<L, T, Tag> const& a, U b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 - _2; });
 }
 
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator-(base<3, T, Tag> const& a, U b) noexcept {
-    return base<3, T, Tag> {a.x - b, a.y - b, a.z - b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator-(base<4, T, Tag> const& a, U b) noexcept {
-    return base<4, T, Tag> {a.x - b, a.y - b, a.z - b, a.w - b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator-(U a, base<2, T, Tag> const& b) noexcept {
-    return base<2, T, Tag> {a - b.x, a - b.y};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator-(U a, base<3, T, Tag> const& b) noexcept {
-    return base<3, T, Tag> {a - b.x, a - b.y, a - b.z};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator-(U a, base<4, T, Tag> const& b) noexcept {
-    return base<4, T, Tag> {a - b.x, a - b.y, a - b.z, a - b.w};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator-(U a, base<L, T, Tag> const& b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 - _2; });
 }
 /** @} */
 
@@ -171,34 +156,14 @@ constexpr base<4, T, Tag> operator-(U a, base<4, T, Tag> const& b) noexcept {
  * @brief multiplication of vector/point/etc and scalar
  * @{
  */
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator*(base<2, T, Tag> const& a, U b) noexcept {
-    return base<2, T, Tag> {a.x * b, a.y * b};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator*(base<L, T, Tag> const& a, U b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 * _2; });
 }
 
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator*(base<3, T, Tag> const& a, U b) noexcept {
-    return base<3, T, Tag> {a.x * b, a.y * b, a.z * b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator*(base<4, T, Tag> const& a, U b) noexcept {
-    return base<4, T, Tag> {a.x * b, a.y * b, a.z * b, a.w * b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator*(U a, base<2, T, Tag> const& b) noexcept {
-    return base<2, T, Tag> {a * b.x, a * b.y};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator*(U a, base<3, T, Tag> const& b) noexcept {
-    return base<3, T, Tag> {a * b.x, a * b.y, a * b.z};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator*(U a, base<4, T, Tag> const& b) noexcept {
-    return base<4, T, Tag> {a * b.x, a * b.y, a * b.z, a * b.w};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator*(U a, base<L, T, Tag> const& b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 * _2; });
 }
 /** @} */
 
@@ -209,34 +174,14 @@ constexpr base<4, T, Tag> operator*(U a, base<4, T, Tag> const& b) noexcept {
  *        since division by zero is not an exception in standard C++.
  * @{
  */
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator/(base<2, T, Tag> const& a, U b) noexcept {
-    return base<2, T, Tag> {a.x / b, a.y / b};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator/(base<L, T, Tag> const& a, U b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 / _2; });
 }
 
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator/(base<3, T, Tag> const& a, U b) noexcept {
-    return base<3, T, Tag> {a.x / b, a.y / b, a.z / b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator/(base<4, T, Tag> const& a, U b) noexcept {
-    return base<4, T, Tag> {a.x / b, a.y / b, a.z / b, a.w / b};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<2, T, Tag> operator/(U a, base<2, T, Tag> const& b) noexcept {
-    return base<2, T, Tag> {a / b.x, a / b.y};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<3, T, Tag> operator/(U a, base<3, T, Tag> const& b) noexcept {
-    return base<3, T, Tag> {a / b.x, a / b.y, a / b.z};
-}
-
-template <typename T, typename U, typename Tag>
-constexpr base<4, T, Tag> operator/(U a, base<4, T, Tag> const& b) noexcept {
-    return base<4, T, Tag> {a / b.x, a / b.y, a / b.z, a / b.w};
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> operator/(U a, base<L, T, Tag> const& b) noexcept {
+    return detail::op_binary(a, b, [](auto _1, auto _2) { return _2 / _2; });
 }
 /** @} */
 }
