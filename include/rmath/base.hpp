@@ -16,7 +16,7 @@ struct base<2, T, Tag> {
         struct {
             T x, y;
         };
-        T data[2];
+        std::array<T, 2> data;
     };
 
     constexpr base()                       = default;
@@ -43,7 +43,7 @@ struct base<3, T, Tag> {
         struct {
             T r, g, b;
         };
-        T data[4];
+        std::array<T, 3> data;
     };
 
     constexpr base()                       = default;
@@ -72,7 +72,7 @@ struct base<4, T, Tag> {
         struct {
             T r, g, b, a;
         };
-        T data[4];
+        std::array<T, 4> data;
     };
 
     constexpr base()                       = default;
