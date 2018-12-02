@@ -15,7 +15,7 @@ TEST_CASE_TEMPLATE("base is a trivial type",
                    rmath::base<3, uint32_t, tag>,
                    rmath::base<4, uint32_t, tag>) {
 
-    CHECK(std::is_trivial<T>::value == true);
+    CHECK(std::is_trivial_v<T> == true);
 }
 
 TEST_CASE_TEMPLATE("base is a standard layout",
@@ -24,5 +24,5 @@ TEST_CASE_TEMPLATE("base is a standard layout",
                    rmath::base<3, uint32_t, tag>,
                    rmath::base<4, uint32_t, tag>) {
 
-    CHECK(std::is_standard_layout<T>::value == true);
+    CHECK(std::is_standard_layout_v<T> == true);
 }
