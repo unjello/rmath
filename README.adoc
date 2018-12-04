@@ -1,0 +1,42 @@
+= rmath
+
+_rmath_ is a header-only, dependency free, library bringing shader-like syntax (GLSL, HSLS) into C++.
+
+== Synopsis
+
+```c++
+
+#include <rmath/all.hpp>
+
+using namespace rmath;
+
+int main() {
+
+  vec4 foo { 0 };                  // 0,0,0,0
+  yx(foo) = vec2(2, 1);            // 1,2,0,0
+  zw(foo) = xy(foo) * 2;           // 1,2,2,4
+}
+```
+
+== See Also
+
+https://github.com/gwiazdorrr/CxxSwizzle[CxxSwizzle] :: Very nice library, _chapeau bas_, with great swizzling approach. One huge issue is that the library relies on a C-like trick for accessing members _via_ union:
++
+[source, c++]
+----
+struct vec3 {
+  union {
+    struct { x, y, z };
+    float data[3];
+  }
+};
+----
++
+which is, unfortunately, a perfect case of *Undefined Behavior* in C++. For now it works, and everybody seems to rely on that, but compilers could as well optimize the-whole-chunk-of-accessing-inactive-members-of-union out.
+
+http://glm.g-truc.net/[GLM] :: Has more features, is more mature, but also very macro-heavy (for same reason https://github.com/gwiazdorrr/CxxSwizzle[CxxSwizzle] was born) and uses the same `union` trick as https://github.com/gwiazdorrr/CxxSwizzle[CxxSwizzle], which is an *Undefined Behavior* in C++. 
+
+== License
+
+- CC0 (~Public Domain)
+
