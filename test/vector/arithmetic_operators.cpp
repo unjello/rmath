@@ -8,16 +8,16 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
     auto c = a + b;
     auto d = a - b;
 
-    CHECK(a.x == 10);
-    CHECK(a.y == 20);
-    CHECK(b.x == 30);
-    CHECK(b.y == 10);
+    CHECK(x(a) == 10);
+    CHECK(y(a) == 20);
+    CHECK(x(b) == 30);
+    CHECK(y(b) == 10);
 
-    CHECK(c.x == 40);
-    CHECK(c.y == 30);
+    CHECK(x(c) == 40);
+    CHECK(y(c) == 30);
 
-    CHECK(d.x == 4294967276); /* 2's complement -20 */
-    CHECK(d.y == 10);
+    CHECK(x(d) == 4294967276); /* 2's complement -20 */
+    CHECK(y(d) == 10);
 }
 
 TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
@@ -26,20 +26,20 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
     auto c = a + b;
     auto d = a - b;
 
-    CHECK(a.x == 10);
-    CHECK(a.y == 20);
-    CHECK(a.z == -30);
-    CHECK(b.x == 30);
-    CHECK(b.y == 10);
-    CHECK(b.z == 40);
+    CHECK(x(a) == 10);
+    CHECK(y(a) == 20);
+    CHECK(z(a) == -30);
+    CHECK(x(b) == 30);
+    CHECK(y(b) == 10);
+    CHECK(z(b) == 40);
 
-    CHECK(c.x == 40);
-    CHECK(c.y == 30);
-    CHECK(c.z == 10);
+    CHECK(x(c) == 40);
+    CHECK(y(c) == 30);
+    CHECK(z(c) == 10);
 
-    CHECK(d.x == -20);
-    CHECK(d.y == 10);
-    CHECK(d.z == -70);
+    CHECK(x(d) == -20);
+    CHECK(y(d) == 10);
+    CHECK(z(d) == -70);
 }
 
 TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
@@ -48,22 +48,22 @@ TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
     auto c = a + b;
     auto d = a - b;
 
-    CHECK(a.x == doctest::Approx(10));
-    CHECK(a.y == doctest::Approx(20));
-    CHECK(a.z == doctest::Approx(-10.5));
-    CHECK(a.w == doctest::Approx(-20));
-    CHECK(b.x == doctest::Approx(30));
-    CHECK(b.y == doctest::Approx(10));
-    CHECK(b.z == doctest::Approx(-10.5));
-    CHECK(b.w == doctest::Approx(10.88));
+    CHECK(x(a) == doctest::Approx(10));
+    CHECK(y(a) == doctest::Approx(20));
+    CHECK(z(a) == doctest::Approx(-10.5));
+    CHECK(w(a) == doctest::Approx(-20));
+    CHECK(x(b) == doctest::Approx(30));
+    CHECK(y(b) == doctest::Approx(10));
+    CHECK(z(b) == doctest::Approx(-10.5));
+    CHECK(w(b) == doctest::Approx(10.88));
 
-    CHECK(c.x == doctest::Approx(40));
-    CHECK(c.y == doctest::Approx(30));
-    CHECK(c.z == doctest::Approx(-21));
-    CHECK(c.w == doctest::Approx(-9.12));
+    CHECK(x(c) == doctest::Approx(40));
+    CHECK(y(c) == doctest::Approx(30));
+    CHECK(z(c) == doctest::Approx(-21));
+    CHECK(w(c) == doctest::Approx(-9.12));
 
-    CHECK(d.x == doctest::Approx(-20));
-    CHECK(d.y == doctest::Approx(10));
-    CHECK(d.z == doctest::Approx(0));
-    CHECK(d.w == doctest::Approx(-30.88));
+    CHECK(x(d) == doctest::Approx(-20));
+    CHECK(y(d) == doctest::Approx(10));
+    CHECK(z(d) == doctest::Approx(0));
+    CHECK(w(d) == doctest::Approx(-30.88));
 }

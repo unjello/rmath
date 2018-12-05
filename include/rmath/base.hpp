@@ -6,91 +6,69 @@
 namespace rmath {
 
 template <size_t L, typename T, typename Tag>
-struct base;
+struct base {
+    typedef T               value_type;
+    typedef Tag             tag_type;
+    typedef base<L, T, Tag> self_type;
+    constexpr static size_t component_size = L;
 
-template <typename T, typename Tag>
-struct base<2, T, Tag> {
-    typedef T value_type;
+    alignas(16) std::array<value_type, L> data;
 
-    union {
-        struct {
-            T x, y;
-        };
-        std::array<T, 2> data;
-    };
+    constexpr base()                 = default;
+    constexpr base(self_type const&) = default;
 
-    constexpr base()                       = default;
-    constexpr base(base<2, T, Tag> const&) = default;
+    constexpr base(value_type s) {
+        for (auto i = 0; i != component_size; ++i)
+            data[i] = s;
+    }
+    template <typename... Tail>
+    constexpr explicit base(value_type&& t0, Tail&&... tail) {
+        construct<0>(std::forward<value_type>(t0), tail...);
+    }
 
-    constexpr explicit base(T scalar)
-        : x(scalar)
-        , y(scalar) {}
-    constexpr base(T _x, T _y)
-        : x(_x)
-        , y(_y) {}
+    constexpr static size_t size() noexcept { return component_size; }
 
-    static constexpr size_t size() { return 2; }
+    template <size_t offset, class... Tail>
+    constexpr void construct(value_type&& t0, Tail&&... tail) {
+        data[offset] = t0;
+        construct<offset + 1>(std::forward<value_type>(tail)...);
+    }
+    template <size_t>
+    constexpr void construct() {}
 };
 
-template <typename T, typename Tag>
-struct base<3, T, Tag> {
-    typedef T value_type;
-
-    union {
-        struct {
-            T x, y, z;
-        };
-        struct {
-            T r, g, b;
-        };
-        std::array<T, 3> data;
-    };
-
-    constexpr base()                       = default;
-    constexpr base(base<3, T, Tag> const&) = default;
-
-    constexpr explicit base(T scalar)
-        : x(scalar)
-        , y(scalar)
-        , z(scalar) {}
-    constexpr base(T _x, T _y, T _z)
-        : x(_x)
-        , y(_y)
-        , z(_z) {}
-
-    static constexpr size_t size() { return 3; }
-};
-
-template <typename T, typename Tag>
-struct base<4, T, Tag> {
-    typedef T value_type;
-
-    union {
-        struct {
-            T x, y, z, w;
-        };
-        struct {
-            T r, g, b, a;
-        };
-        std::array<T, 4> data;
-    };
-
-    constexpr base()                       = default;
-    constexpr base(base<4, T, Tag> const&) = default;
-
-    constexpr explicit base(T scalar)
-        : x(scalar)
-        , y(scalar)
-        , z(scalar)
-        , w(scalar) {}
-    constexpr base(T _x, T _y, T _z, T _w)
-        : x(_x)
-        , y(_y)
-        , z(_z)
-        , w(_w) {}
-
-    static constexpr size_t size() { return 4; }
-};
+template <size_t L, typename T, typename Tag>
+constexpr T& x(base<L, T, Tag>& v) noexcept {
+    return v.data[0];
+}
+template <size_t L, typename T, typename Tag>
+constexpr T& y(base<L, T, Tag>& v) noexcept {
+    return v.data[1];
+}
+template <size_t L, typename T, typename Tag>
+constexpr T& z(base<L, T, Tag>& v) noexcept {
+    return v.data[2];
+}
+template <size_t L, typename T, typename Tag>
+constexpr T& w(base<L, T, Tag>& v) noexcept {
+    return v.data[3];
+}
+template <size_t L, typename T, typename Tag>
+constexpr T x(base<L, T, Tag> const& v) noexcept {
+    return v.data[0];
+}
+template <size_t L, typename T, typename Tag>
+constexpr T y(base<L, T, Tag> const& v) noexcept {
+    return v.data[1];
+}
+template <size_t L, typename T, typename Tag>
+constexpr T z(base<L, T, Tag> const& v) noexcept {
+    return v.data[2];
+}
+template <size_t L, typename T, typename Tag>
+constexpr T w(base<L, T, Tag> const& v) noexcept {
+    return v.data[3];
+}
 
 namespace detail {
 template <size_t L, typename T, typename U, typename Tag, typename F>

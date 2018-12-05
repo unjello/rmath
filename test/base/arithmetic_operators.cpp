@@ -12,27 +12,27 @@ TEST_CASE("arithmetic operations on base2 of unsigneds and scalars are performed
     auto i = a + 10;
     auto j = 20 + b;
 
-    CHECK(a.x == 10);
-    CHECK(a.y == 20);
-    CHECK(b.x == 30);
-    CHECK(b.y == 10);
+    CHECK(x(a) == 10);
+    CHECK(y(a) == 20);
+    CHECK(x(b) == 30);
+    CHECK(y(b) == 10);
 
-    CHECK(e.x == 0);
-    CHECK(e.y == 10);
+    CHECK(x(e) == 0);
+    CHECK(y(e) == 10);
 
-    CHECK(f.x == 4294967276);
-    CHECK(f.y == 0);
+    CHECK(x(f) == 4294967276);
+    CHECK(y(f) == 0);
 
-    CHECK(g.x == 100);
-    CHECK(g.y == 200);
+    CHECK(x(g) == 100);
+    CHECK(y(g) == 200);
 
-    CHECK(h.x == 600);
-    CHECK(h.y == 200);
+    CHECK(x(h) == 600);
+    CHECK(y(h) == 200);
 
-    CHECK(i.x == 20);
-    CHECK(i.y == 30);
-    CHECK(j.x == 50);
-    CHECK(j.y == 30);
+    CHECK(x(i) == 20);
+    CHECK(y(i) == 30);
+    CHECK(x(j) == 50);
+    CHECK(y(j) == 30);
 }
 
 TEST_CASE("arithmetic operations on base3 of signed and scalars are performed correctly") {
@@ -45,36 +45,36 @@ TEST_CASE("arithmetic operations on base3 of signed and scalars are performed co
     auto i = a + 10;
     auto j = -20 + b;
 
-    CHECK(a.x == 10);
-    CHECK(a.y == 20);
-    CHECK(a.z == -30);
-    CHECK(b.x == 30);
-    CHECK(b.y == 10);
-    CHECK(b.z == 40);
+    CHECK(x(a) == 10);
+    CHECK(y(a) == 20);
+    CHECK(z(a) == -30);
+    CHECK(x(b) == 30);
+    CHECK(y(b) == 10);
+    CHECK(z(b) == 40);
 
-    CHECK(e.x == 0);
-    CHECK(e.y == 10);
-    CHECK(e.z == -40);
+    CHECK(x(e) == 0);
+    CHECK(y(e) == 10);
+    CHECK(z(e) == -40);
 
-    CHECK(f.x == -20);
-    CHECK(f.y == 0);
-    CHECK(f.z == -30);
+    CHECK(x(f) == -20);
+    CHECK(y(f) == 0);
+    CHECK(z(f) == -30);
 
-    CHECK(g.x == 100);
-    CHECK(g.y == 200);
-    CHECK(g.z == -300);
+    CHECK(x(g) == 100);
+    CHECK(y(g) == 200);
+    CHECK(z(g) == -300);
 
-    CHECK(h.x == -600);
-    CHECK(h.y == -200);
-    CHECK(h.z == -800);
+    CHECK(x(h) == -600);
+    CHECK(y(h) == -200);
+    CHECK(z(h) == -800);
 
-    CHECK(i.x == 20);
-    CHECK(i.y == 30);
-    CHECK(i.z == -20);
+    CHECK(x(i) == 20);
+    CHECK(y(i) == 30);
+    CHECK(z(i) == -20);
 
-    CHECK(j.x == 10);
-    CHECK(j.y == -10);
-    CHECK(j.z == 20);
+    CHECK(x(j) == 10);
+    CHECK(y(j) == -10);
+    CHECK(z(j) == 20);
 }
 
 TEST_CASE("arithmetic operations on base4 of floats and scalars are performed correctly") {
@@ -87,42 +87,42 @@ TEST_CASE("arithmetic operations on base4 of floats and scalars are performed co
     auto i = a + 10;
     auto j = -20.5f + b;
 
-    CHECK(a.x == doctest::Approx(10));
-    CHECK(a.y == doctest::Approx(20));
-    CHECK(a.z == doctest::Approx(-10.5));
-    CHECK(a.w == doctest::Approx(-20));
-    CHECK(b.x == doctest::Approx(30));
-    CHECK(b.y == doctest::Approx(10));
-    CHECK(b.z == doctest::Approx(-10.5));
-    CHECK(b.w == doctest::Approx(10.88));
+    CHECK(x(a) == doctest::Approx(10));
+    CHECK(y(a) == doctest::Approx(20));
+    CHECK(z(a) == doctest::Approx(-10.5));
+    CHECK(w(a) == doctest::Approx(-20));
+    CHECK(x(b) == doctest::Approx(30));
+    CHECK(y(b) == doctest::Approx(10));
+    CHECK(z(b) == doctest::Approx(-10.5));
+    CHECK(w(b) == doctest::Approx(10.88));
 
-    CHECK(e.x == doctest::Approx(0));
-    CHECK(e.y == doctest::Approx(10));
-    CHECK(e.z == doctest::Approx(-20.5));
-    CHECK(e.w == doctest::Approx(-30));
+    CHECK(x(e) == doctest::Approx(0));
+    CHECK(y(e) == doctest::Approx(10));
+    CHECK(z(e) == doctest::Approx(-20.5));
+    CHECK(w(e) == doctest::Approx(-30));
 
-    CHECK(f.x == doctest::Approx(-20));
-    CHECK(f.y == doctest::Approx(0));
-    CHECK(f.z == doctest::Approx(20.5));
-    CHECK(f.w == doctest::Approx(-0.88));
+    CHECK(x(f) == doctest::Approx(-20));
+    CHECK(y(f) == doctest::Approx(0));
+    CHECK(z(f) == doctest::Approx(20.5));
+    CHECK(w(f) == doctest::Approx(-0.88));
 
-    CHECK(g.x == doctest::Approx(100));
-    CHECK(g.y == doctest::Approx(200));
-    CHECK(g.z == doctest::Approx(-105));
-    CHECK(g.w == doctest::Approx(-200));
+    CHECK(x(g) == doctest::Approx(100));
+    CHECK(y(g) == doctest::Approx(200));
+    CHECK(z(g) == doctest::Approx(-105));
+    CHECK(w(g) == doctest::Approx(-200));
 
-    CHECK(h.x == doctest::Approx(615));
-    CHECK(h.y == doctest::Approx(205));
-    CHECK(h.z == doctest::Approx(-215.25));
-    CHECK(h.w == doctest::Approx(223.04));
+    CHECK(x(h) == doctest::Approx(615));
+    CHECK(y(h) == doctest::Approx(205));
+    CHECK(z(h) == doctest::Approx(-215.25));
+    CHECK(w(h) == doctest::Approx(223.04));
 
-    CHECK(i.x == doctest::Approx(20));
-    CHECK(i.y == doctest::Approx(30));
-    CHECK(i.z == doctest::Approx(-0.5));
-    CHECK(i.w == doctest::Approx(-10));
+    CHECK(x(i) == doctest::Approx(20));
+    CHECK(y(i) == doctest::Approx(30));
+    CHECK(z(i) == doctest::Approx(-0.5));
+    CHECK(w(i) == doctest::Approx(-10));
 
-    CHECK(j.x == doctest::Approx(9.5));
-    CHECK(j.y == doctest::Approx(-10.5));
-    CHECK(j.z == doctest::Approx(-31));
-    CHECK(j.w == doctest::Approx(-9.62));
+    CHECK(x(j) == doctest::Approx(9.5));
+    CHECK(y(j) == doctest::Approx(-10.5));
+    CHECK(z(j) == doctest::Approx(-31));
+    CHECK(w(j) == doctest::Approx(-9.62));
 }
