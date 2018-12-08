@@ -48,77 +48,54 @@ constexpr T length(vector<L, T> const& v) {
  * @brief adding and substracting points and vectors (directions)
  * @{
  */
-template <typename T>
-constexpr vector2<T> operator+(vector2<T> const& a, vector2<T> const& b) noexcept {
-    return vector2<T> {x(a) + x(b), y(a) + y(b)};
+namespace detail {
+template <size_t L, typename T, size_t... i>
+constexpr vector<L, T>
+vec_plus_vec(vector<L, T> const& a, vector<L, T> const& b, std::integer_sequence<size_t, i...>) {
+    return vector<L, T> {(a.data[i] + b.data[i])...};
+}
+template <size_t L, typename T, size_t... i>
+constexpr vector<L, T>
+vec_minus_vec(vector<L, T> const& a, vector<L, T> const& b, std::integer_sequence<size_t, i...>) {
+    return vector<L, T> {(a.data[i] - b.data[i])...};
+}
+template <size_t L, typename T, size_t... i>
+constexpr point<L, T>
+pt_plus_vec(point<L, T> const& a, vector<L, T> const& b, std::integer_sequence<size_t, i...>) {
+    return point<L, T> {(a.data[i] + b.data[i])...};
+}
+template <size_t L, typename T, size_t... i>
+constexpr vector<L, T>
+pt_minus_pt(point<L, T> const& a, point<L, T> const& b, std::integer_sequence<size_t, i...>) {
+    return vector<L, T> {(a.data[i] - b.data[i])...};
+}
 }
 
-template <typename T>
-constexpr vector3<T> operator+(vector3<T> const& a, vector3<T> const& b) noexcept {
-    return vector3<T> {x(a) + x(b), y(a) + y(b), z(a) + z(b)};
+template <size_t L, typename T, size_t... i>
+constexpr vector<L, T> operator+(vector<L, T> const& a, vector<L, T> const& b) noexcept {
+    return vec_plus_vec(a, b, std::make_integer_sequence<size_t, L>());
 }
 
-template <typename T>
-constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) noexcept {
-    return vector4<T> {x(a) + x(b), y(a) + y(b), z(a) + z(b), w(a) + w(b)};
+template <size_t L, typename T, size_t... i>
+constexpr vector<L, T> operator-(vector<L, T> const& a, vector<L, T> const& b) noexcept {
+    return vec_minus_vec(a, b, std::make_integer_sequence<size_t, L>());
 }
 
-template <typename T>
-constexpr vector2<T> operator-(vector2<T> const& a, vector2<T> const& b) noexcept {
-    return vector2<T> {x(a) - x(b), y(a) - y(b)};
+template <size_t L, typename T, size_t... i>
+constexpr point<L, T> operator+(point<L, T> const& a, vector<L, T> const& b) noexcept {
+    return pt_plus_vec(a, b, std::make_integer_sequence<size_t, L>());
 }
 
-template <typename T>
-constexpr vector3<T> operator-(vector3<T> const& a, vector3<T> const& b) noexcept {
-    return vector3<T> {x(a) - x(b), y(a) - y(b), z(a) - z(b)};
+template <size_t L, typename T, size_t... i>
+constexpr point<L, T> operator+(vector<L, T> const& a, point<L, T> const& b) noexcept {
+    return pt_plus_vec(b, a, std::make_integer_sequence<size_t, L>());
 }
 
-template <typename T>
-constexpr vector4<T> operator-(vector4<T> const& a, vector4<T> const& b) noexcept {
-    return vector4<T> {x(a) - x(b), y(a) - y(b), z(a) - z(b), w(a) - w(b)};
+template <size_t L, typename T, size_t... i>
+constexpr vector<L, T> operator-(point<L, T> const& a, point<L, T> const& b) noexcept {
+    return pt_minus_pt(b, a, std::make_integer_sequence<size_t, L>());
 }
 
-template <typename T>
-constexpr point2<T> operator+(point2<T> const& a, vector2<T> const& b) noexcept {
-    return point2<T> {x(a) + x(b), y(a) + y(b)};
-}
-template <typename T>
-constexpr point2<T> operator+(vector2<T> const& a, point2<T> const& b) noexcept {
-    return operator+(b, a);
-}
-
-template <typename T>
-constexpr point3<T> operator+(point3<T> const& a, vector3<T> const& b) noexcept {
-    return point3<T> {x(a) + x(b), y(a) + y(b), z(a) + z(b)};
-}
-template <typename T>
-constexpr point3<T> operator+(vector3<T> const& a, point3<T> const& b) noexcept {
-    return operator+(b, a);
-}
-
-template <typename T>
-constexpr point4<T> operator+(point4<T> const& a, vector4<T> const& b) noexcept {
-    return point4<T> {x(a) + x(b), y(a) + y(b), z(a) + z(b), w(a) + w(b)};
-}
-template <typename T>
-constexpr point4<T> operator+(vector4<T> const& a, point4<T> const& b) noexcept {
-    return operator+(b, a);
-}
-
-template <typename T>
-constexpr vector2<T> operator-(point2<T> const& a, point2<T> const& b) noexcept {
-    return vector2<T> {x(a) - x(b), y(a) - y(b)};
-}
-
-template <typename T>
-constexpr vector3<T> operator-(point3<T> const& a, point3<T> const& b) noexcept {
-    return vector3<T> {x(a) - x(b), y(a) - y(b), z(a) - z(b)};
-}
-
-template <typename T>
-constexpr vector4<T> operator-(point4<T> const& a, point4<T> const& b) noexcept {
-    return vector4<T> {x(a) - x(b), y(a) - y(b), z(a) - z(b), w(a) - w(b)};
-}
 /** @} */
 
 template <size_t L, class T>
