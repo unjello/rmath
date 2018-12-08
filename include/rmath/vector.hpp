@@ -122,20 +122,6 @@ constexpr vector4<T> operator-(point4<T> const& a, point4<T> const& b) noexcept 
 /** @} */
 
 template <class T>
-const T distance(vector2<T> const& a, vector2<T> const& b) noexcept {
-    return round<T>(std::sqrt((x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b))));
-}
-template <class T>
-const T distance(vector3<T> const& a, vector3<T> const& b) noexcept {
-    return round<T>(std::sqrt((x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b))
-                              + (z(a) - z(b)) * (z(a) - z(b))));
-}
-template <class T>
-const T distance(vector4<T> const& a, vector4<T> const& b) noexcept {
-    return round<T>(std::sqrt((x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b))
-                              + (z(a) - z(b)) * (z(a) - z(b)) + (w(a) - w(b)) * (w(a) - w(b))));
-}
-template <class T>
 constexpr T distance_sq(vector2<T> const& a, vector2<T> const& b) noexcept {
     return (x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b));
 }
@@ -148,5 +134,20 @@ template <class T>
 constexpr T distance_sq(vector4<T> const& a, vector4<T> const& b) noexcept {
     return (x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b))
         + (z(a) - z(b)) * (z(a) - z(b)) + (w(a) - w(b)) * (w(a) - w(b));
+}
+
+template <class T>
+const T distance(vector2<T> const& a, vector2<T> const& b) noexcept {
+    return round<T>(std::sqrt((x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b))));
+}
+template <class T>
+const T distance(vector3<T> const& a, vector3<T> const& b) noexcept {
+    return round<T>(std::sqrt((x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b))
+                              + (z(a) - z(b)) * (z(a) - z(b))));
+}
+template <class T>
+const T distance(vector4<T> const& a, vector4<T> const& b) noexcept {
+    return round<T>(std::sqrt((x(a) - x(b)) * (x(a) - x(b)) + (y(a) - y(b)) * (y(a) - y(b))
+                              + (z(a) - z(b)) * (z(a) - z(b)) + (w(a) - w(b)) * (w(a) - w(b))));
 }
 }
