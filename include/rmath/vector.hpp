@@ -31,7 +31,7 @@ using vec4  = vector4<float>;
 template <size_t L, typename T>
 constexpr T length_sq(vector<L, T> const& v) {
     T aggregate = 0;
-    for (auto i = 0; i < vector<L, T>::component_size; ++i) {
+    for (size_t i = 0; i < vector<L, T>::component_size; ++i) {
         aggregate += v.data[i] * v.data[i];
     }
     return aggregate;
@@ -53,6 +53,15 @@ constexpr vector2<T> operator+(vector2<T> const& a, vector2<T> const& b) noexcep
     return vector2<T> {x(a) + x(b), y(a) + y(b)};
 }
 
+template <typename T>
+constexpr vector3<T> operator+(vector3<T> const& a, vector3<T> const& b) noexcept {
+    return vector3<T> {x(a) + x(b), y(a) + y(b), z(a) + z(b)};
+}
+
+template <typename T>
+constexpr vector4<T> operator+(vector4<T> const& a, vector4<T> const& b) noexcept {
+    return vector4<T> {x(a) + x(b), y(a) + y(b), z(a) + z(b), w(a) + w(b)};
+}
 
 template <typename T>
 constexpr vector2<T> operator-(vector2<T> const& a, vector2<T> const& b) noexcept {
