@@ -1,0 +1,2 @@
+compiler: g++-8
+standard: c++2a
