@@ -92,6 +92,17 @@ constexpr base<L, T, Tag>
 op_binary(U a, base<L, T, Tag> const& b, F f, std::integer_sequence<size_t, i...>) {
     return base<L, T, Tag> {f(a, b.data[i])...};
 }
+
+template <size_t L, typename T, typename Tag, typename F>
+constexpr base<L, T, Tag> op_unary(base<L, T, Tag> const& v, F f) {
+    return op_unary(v, f, std::make_integer_sequence<size_t, L>());
+}
+
+template <size_t L, typename T, typename Tag, typename F, size_t... i>
+constexpr base<L, T, Tag>
+op_unary(base<L, T, Tag> const& v, F f, std::integer_sequence<size_t, i...>) {
+    return base<L, T, Tag> {f(v.data[i])...};
+}
 }
 
 /**
@@ -162,4 +173,9 @@ constexpr base<L, T, Tag> operator/(U a, base<L, T, Tag> const& b) noexcept {
     return detail::op_binary(a, b, [](auto _1, auto _2) { return _2 / _2; });
 }
 /** @} */
+
+template <size_t L, typename T, typename Tag>
+constexpr base<L, T, Tag> abs(base<L, T, Tag> const& v) noexcept {
+    return detail::op_unary(v, [](auto i) { return std::abs(i); });
+}
 }
