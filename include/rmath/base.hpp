@@ -175,6 +175,11 @@ constexpr base<L, T, Tag> operator/(U a, base<L, T, Tag> const& b) noexcept {
 /** @} */
 
 template <size_t L, typename T, typename Tag>
+constexpr base<L, T, Tag> operator+(base<L, T, Tag> const& a) noexcept {
+    return base<L, T, Tag> {a};
+}
+
+template <size_t L, typename T, typename Tag>
 constexpr base<L, T, Tag> operator-(base<L, T, Tag> const& a) noexcept {
     return detail::op_unary(a, [](auto i) { return -i; });
 }
