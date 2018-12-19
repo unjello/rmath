@@ -188,4 +188,13 @@ template <size_t L, typename T, typename Tag>
 constexpr base<L, T, Tag> abs(base<L, T, Tag> const& v) noexcept {
     return detail::op_unary(v, [](auto i) { return std::abs(i); });
 }
+
+template <size_t L, typename T, typename Tag>
+constexpr base<L, T, Tag> floor(base<L, T, Tag> const& v) noexcept {
+  if constexpr (std::is_integral_v<T> == true) {
+    return v;
+  } else {
+    return detail::op_unary(v, [](auto i) { return std::floor(i); });
+  }
+}
 }
