@@ -65,6 +65,6 @@ TEST_CASE("floor is computer correctly") {
     CHECK(rmath::y(r1) == -2);
 
     CHECK(rmath::x(r2) == doctest::Approx(1.0));
-    CHECK(rmath::y(r2) == doctest::Approx(3.0));
-    CHECK(rmath::z(r2) == doctest::Approx(4.0));
+    CHECK(rmath::y(r2) == doctest::Approx(-4.0));
+    CHECK(rmath::z(r2) == doctest::Approx(-5.0));
 }
