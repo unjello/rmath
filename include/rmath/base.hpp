@@ -197,4 +197,21 @@ constexpr base<L, T, Tag> floor(base<L, T, Tag> const& v) noexcept {
         return detail::op_unary(v, [](auto i) { return std::floor(i); });
     }
 }
+
+template <size_t L, typename T, typename Tag>
+constexpr base<L, T, Tag> fract(base<L, T, Tag> const& v) noexcept {
+    if constexpr (std::is_integral_v<T> == true) {
+        return 0;
+    } else {
+        return detail::op_unary(v, [](auto i) { return 1.f - std::floor(i); });
+    }
+}
+
+template <size_t L, typename T, typename Tag>
+constexpr base<L, T, Tag> mod(base<L, T, Tag> const& a, T b) noexcept {
+    constexpr auto f = std::is_integral_v<T> == true
+        ? [](auto _1, auto _2) { return _1 % _2; }
+        : [](auto _1, auto _2) { return std::fmod(_1, _2); };
+    return detail::op_unary(a, b, f);
+}
 }
