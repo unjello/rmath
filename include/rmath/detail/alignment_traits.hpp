@@ -8,7 +8,7 @@ struct alignment_constant {
     static constexpr size_t          value_unaligned = L;
     typedef size_t                   value_type;
     typedef alignment_constant<L, V> type;
-    constexpr                        operator value_type() { return value; }
+    constexpr                        operator value_type() const noexcept { return value; }
 };
 
 template <size_t L>
