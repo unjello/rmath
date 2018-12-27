@@ -19,4 +19,7 @@ template <>
 struct align_to<3> : public alignment_constant<3, 4> {};
 template <>
 struct align_to<4> : public alignment_constant<4, 4> {};
+
+template <size_t L>
+inline constexpr bool align_to_v = align_to<L>::value;
 }
