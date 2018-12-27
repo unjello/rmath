@@ -4,7 +4,8 @@
 namespace rmath::detail {
 template <size_t L, size_t V>
 struct alignment_constant {
-    static constexpr size_t          value = V;
+    static constexpr size_t          value           = V;
+    static constexpr size_t          value_unaligned = L;
     typedef size_t                   value_type;
     typedef alignment_constant<L, V> type;
     constexpr                        operator value_type() { return value; }
