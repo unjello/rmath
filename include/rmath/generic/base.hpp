@@ -198,6 +198,19 @@ constexpr base<L, T, Tag> floor(base<L, T, Tag> const& v) noexcept {
     }
 }
 
+/**
+ * @brief returns a vector with fractional parts of `v`
+ *
+ * For integral (`int`, `unsigned int`, etc) it returns vector containing
+ * zero, as integers cannot have fractional part.
+ *
+ * For floating numbers, it returns fractional part calculated as:
+ *    i - floor(i)
+ * which for positive numbers means 4.11 -> 0.11, but for negative it means
+ * -4.11 -> 0.89.
+ *
+ * @see https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/fract.xhtml
+ */
 template <size_t L, typename T, typename Tag>
 constexpr base<L, T, Tag> fract(base<L, T, Tag> const& v) noexcept {
     if constexpr (std::is_integral_v<T> == true) {
