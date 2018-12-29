@@ -203,7 +203,7 @@ constexpr base<L, T, Tag> fract(base<L, T, Tag> const& v) noexcept {
     if constexpr (std::is_integral_v<T> == true) {
         return 0;
     } else {
-        return detail::op_unary(v, [](auto i) { return 1.f - std::floor(i); });
+        return detail::op_unary(v, [](auto i) { return i - std::floor(i); });
     }
 }
 
