@@ -207,12 +207,13 @@ constexpr base<L, T, Tag> fract(base<L, T, Tag> const& v) noexcept {
     }
 }
 
-template <size_t L, typename T, typename Tag>
-constexpr base<L, T, Tag> mod(base<L, T, Tag> const& a, T b) noexcept {
-    constexpr auto f = std::is_integral_v<T> == true
-        ? [](auto _1, auto _2) { return _1 % _2; }
-        : [](auto _1, auto _2) { return std::fmod(_1, _2); };
-    return detail::op_unary(a, b, f);
-}
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> mod(base<L, T, Tag> const& a, U b) noexcept {
+    if constexpr (std::is_integral_v<T> == true) {
+        return detail::op_binary(a, b, [](auto _1, auto _2) { return _1 % _2; });
 
+    } else {
+        return detail::op_binary(a, b, [](auto _1, auto _2) { return std::fmod(_1, _2); });
+    }
+}
 }
