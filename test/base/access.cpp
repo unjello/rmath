@@ -1,11 +1,13 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
-#include <rmath/base.hpp>
+#include <rmath/generic/base.hpp>
+
+using namespace rmath::generic;
 
 struct tag {};
 
 TEST_CASE("base data can be accessed") {
-    auto pt = rmath::base<2, uint32_t, tag>();
+    auto pt = base<2, uint32_t, tag>();
     x(pt)   = 99;
     y(pt)   = 98;
 
@@ -14,7 +16,7 @@ TEST_CASE("base data can be accessed") {
 }
 
 TEST_CASE("base data can be accessed") {
-    auto pt = rmath::base<3, uint32_t, tag>();
+    auto pt = base<3, uint32_t, tag>();
     x(pt)   = 99;
     y(pt)   = 98;
     z(pt)   = 99;
@@ -28,7 +30,7 @@ TEST_CASE("base data can be accessed") {
 }
 
 TEST_CASE("base data can be accessed") {
-    auto pt = rmath::base<4, uint32_t, tag>();
+    auto pt = base<4, uint32_t, tag>();
     x(pt)   = 99;
     y(pt)   = 98;
     z(pt)   = 99;
@@ -45,7 +47,7 @@ TEST_CASE("base data can be accessed") {
 }
 
 TEST_CASE("base data length matches") {
-    CHECK(rmath::base<2, uint32_t, tag>::size() == 2);
-    CHECK(rmath::base<3, uint32_t, tag>::size() == 3);
-    CHECK(rmath::base<4, uint32_t, tag>::size() == 4);
+    CHECK(base<2, uint32_t, tag>::size() == 2);
+    CHECK(base<3, uint32_t, tag>::size() == 3);
+    CHECK(base<4, uint32_t, tag>::size() == 4);
 }

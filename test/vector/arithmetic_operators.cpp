@@ -1,9 +1,11 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
-#include <rmath/vector.hpp>
+#include <rmath/generic/vector.hpp>
+
+using namespace rmath::generic;
 
 TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
-    rmath::uvec2 a {10, 20}, b {30, 10};
+    uvec2 a {10, 20}, b {30, 10};
 
     auto c = a + b;
     auto d = a - b;
@@ -21,7 +23,7 @@ TEST_CASE("arithmetic operations on two uvec2's are performed correctly") {
 }
 
 TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
-    rmath::ivec3 a {10, 20, -30}, b {30, 10, 40};
+    ivec3 a {10, 20, -30}, b {30, 10, 40};
 
     auto c = a + b;
     auto d = a - b;
@@ -43,7 +45,7 @@ TEST_CASE("arithmetic operations on two ivec3's are performed correctly") {
 }
 
 TEST_CASE("arithmetic operations on two vec4's are performed correctly") {
-    rmath::vec4 a {10, 20, -10.5, -20}, b {30, 10, -10.5, 10.88};
+    vec4 a {10, 20, -10.5, -20}, b {30, 10, -10.5, 10.88};
 
     auto c = a + b;
     auto d = a - b;

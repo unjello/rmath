@@ -1,8 +1,8 @@
 #pragma once
 
-#include <rmath/base.hpp>
+#include <rmath/generic/base.hpp>
 
-namespace rmath {
+namespace rmath::generic {
 namespace detail {
 struct color_tag {};
 }

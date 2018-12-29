@@ -1,9 +1,11 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
-#include <rmath/vector.hpp>
+#include <rmath/generic/vector.hpp>
+
+using namespace rmath::generic;
 
 TEST_CASE("arithmetic operations on base2 of unsigneds and scalars are performed correctly") {
-    rmath::uvec2 a {10, 20}, b {30, 10};
+    uvec2 a {10, 20}, b {30, 10};
 
     auto e = a - 10;
     auto f = 10 - b;
@@ -36,7 +38,7 @@ TEST_CASE("arithmetic operations on base2 of unsigneds and scalars are performed
 }
 
 TEST_CASE("arithmetic operations on base3 of signed and scalars are performed correctly") {
-    rmath::ivec3 a {10, 20, -30}, b {30, 10, 40};
+    ivec3 a {10, 20, -30}, b {30, 10, 40};
 
     auto e = a - 10;
     auto f = 10 - b;
@@ -78,7 +80,7 @@ TEST_CASE("arithmetic operations on base3 of signed and scalars are performed co
 }
 
 TEST_CASE("arithmetic operations on base4 of floats and scalars are performed correctly") {
-    rmath::vec4 a {10, 20, -10.5, -20}, b {30, 10, -10.5, 10.88};
+    vec4 a {10, 20, -10.5, -20}, b {30, 10, -10.5, 10.88};
 
     auto e = a - 10;
     auto f = 10 - b;

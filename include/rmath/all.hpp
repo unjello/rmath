@@ -1,4 +1,4 @@
 #pragma once
 
-#include <rmath/point.hpp>
-#include <rmath/vector.hpp>
+#include <rmath/generic/point.hpp>
+#include <rmath/generic/vector.hpp>

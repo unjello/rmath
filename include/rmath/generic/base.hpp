@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <utility>
 
-namespace rmath {
+namespace rmath::generic {
 
 template <size_t L, typename T, typename Tag>
 struct base {
@@ -214,4 +214,5 @@ constexpr base<L, T, Tag> mod(base<L, T, Tag> const& a, T b) noexcept {
         : [](auto _1, auto _2) { return std::fmod(_1, _2); };
     return detail::op_unary(a, b, f);
 }
+
 }

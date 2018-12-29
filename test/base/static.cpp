@@ -1,6 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
-#include <rmath/base.hpp>
+#include <rmath/generic/base.hpp>
+
+using namespace rmath::generic;
 
 struct tag {};
 
@@ -11,18 +13,18 @@ struct tag {};
  */
 TEST_CASE_TEMPLATE("base is a trivial type",
                    T,
-                   rmath::base<2, uint32_t, tag>,
-                   rmath::base<3, uint32_t, tag>,
-                   rmath::base<4, uint32_t, tag>) {
+                   base<2, uint32_t, tag>,
+                   base<3, uint32_t, tag>,
+                   base<4, uint32_t, tag>) {
 
     CHECK(std::is_trivial_v<T> == true);
 }
 
 TEST_CASE_TEMPLATE("base is a standard layout",
                    T,
-                   rmath::base<2, uint32_t, tag>,
-                   rmath::base<3, uint32_t, tag>,
-                   rmath::base<4, uint32_t, tag>) {
+                   base<2, uint32_t, tag>,
+                   base<3, uint32_t, tag>,
+                   base<4, uint32_t, tag>) {
 
     CHECK(std::is_standard_layout_v<T> == true);
 }

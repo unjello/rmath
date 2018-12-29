@@ -1,10 +1,10 @@
 #pragma once
 
-#include <rmath/base.hpp>
+#include <rmath/generic/base.hpp>
+#include <rmath/generic/point.hpp>
 #include <rmath/helper.hpp>
-#include <rmath/point.hpp>
 
-namespace rmath {
+namespace rmath::generic {
 namespace detail {
 struct vector_tag {};
 }
