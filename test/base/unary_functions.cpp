@@ -75,13 +75,13 @@ TEST_CASE("fract is computer correctly") {
     ivec2 v1 {1, -2};
     vec3  v2 {1.1, -3.5, -4.99};
 
-    auto r1 = floor(v1);
-    auto r2 = floor(v2);
+    auto r1 = fract(v1);
+    auto r2 = fract(v2);
 
     CHECK(x(r1) == 0);
     CHECK(y(r1) == 0);
 
     CHECK(x(r2) == doctest::Approx(0.1));
-    CHECK(y(r2) == doctest::Approx(-0.5));
-    CHECK(z(r2) == doctest::Approx(-0.99));
+    CHECK(y(r2) == doctest::Approx(0.5));
+    CHECK(z(r2) == doctest::Approx(0.01));
 }
