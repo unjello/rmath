@@ -24,4 +24,6 @@ constexpr float w(vector4 const& v) noexcept {
     return _mm_cvtss_f32(_mm_shuffle_ps(m, m, _MM_SHUFFLE(3, 3, 3, 3)));
 }
 
+vector4 operator+(vector4 a, vector4 b) { return vector4(_mm_add_ps(a.data, b.data)); }
+vector4 operator-(vector4 a, vector4 b) { return vector4(_mm_sub_ps(a.data, b.data)); }
 }
