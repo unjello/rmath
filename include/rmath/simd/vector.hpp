@@ -13,15 +13,15 @@ struct vector4 {
     __m128 data;
 };
 
-constexpr float x(vector4 const& v) noexcept { return _mm_cvtss_f32(v.data) }
-constexpr float y(vector4 const& v) noexcept {
+float x(vector4 const& v) noexcept { return _mm_cvtss_f32(v.data); }
+float y(vector4 const& v) noexcept {
     return _mm_cvtss_f32(_mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(1, 1, 1, 1)));
 }
-constexpr float z(vector4 const& v) noexcept {
-    return _mm_cvtss_f32(_mm_shuffle_ps(m, m, _MM_SHUFFLE(2, 2, 2, 2)))
+float z(vector4 const& v) noexcept {
+    return _mm_cvtss_f32(_mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(2, 2, 2, 2)));
 }
-constexpr float w(vector4 const& v) noexcept {
-    return _mm_cvtss_f32(_mm_shuffle_ps(m, m, _MM_SHUFFLE(3, 3, 3, 3)));
+float w(vector4 const& v) noexcept {
+    return _mm_cvtss_f32(_mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(3, 3, 3, 3)));
 }
 
 vector4 operator+(vector4 a, vector4 b) { return vector4(_mm_add_ps(a.data, b.data)); }
