@@ -26,4 +26,6 @@ float w(vector4 const& v) noexcept {
 
 vector4 operator+(vector4 a, vector4 b) { return vector4(_mm_add_ps(a.data, b.data)); }
 vector4 operator-(vector4 a, vector4 b) { return vector4(_mm_sub_ps(a.data, b.data)); }
+vector4 operator*(vector4 a, vector4 b) { return vector4(_mm_mul_ps(a.data, b.data)); }
+vector4 operator/(vector4 a, vector4 b) { return vector4(_mm_div_ps(a.data, b.data)); }
 }
