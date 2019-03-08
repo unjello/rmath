@@ -79,7 +79,7 @@ constexpr base<L, T, Tag> op_binary(base<L, T, Tag> const& a, U b, F f) {
 template <size_t L, typename T, typename U, typename Tag, typename F, size_t... i>
 constexpr base<L, T, Tag>
 op_binary(base<L, T, Tag> const& a, U b, F f, std::integer_sequence<size_t, i...>) {
-    return base<L, T, Tag> {f(a.data[i], b)...};
+    return base<L, T, Tag>{f(a.data[i], b)...};
 }
 
 template <size_t L, typename T, typename U, typename Tag, typename F>
@@ -90,7 +90,7 @@ constexpr base<L, T, Tag> op_binary(U a, base<L, T, Tag> const& b, F f) {
 template <size_t L, typename T, typename U, typename Tag, typename F, size_t... i>
 constexpr base<L, T, Tag>
 op_binary(U a, base<L, T, Tag> const& b, F f, std::integer_sequence<size_t, i...>) {
-    return base<L, T, Tag> {f(a, b.data[i])...};
+    return base<L, T, Tag>{f(a, b.data[i])...};
 }
 
 template <size_t L, typename T, typename Tag, typename F>
@@ -101,7 +101,7 @@ constexpr base<L, T, Tag> op_unary(base<L, T, Tag> const& v, F f) {
 template <size_t L, typename T, typename Tag, typename F, size_t... i>
 constexpr base<L, T, Tag>
 op_unary(base<L, T, Tag> const& v, F f, std::integer_sequence<size_t, i...>) {
-    return base<L, T, Tag> {f(v.data[i])...};
+    return base<L, T, Tag>{f(v.data[i])...};
 }
 }
 
@@ -176,7 +176,7 @@ constexpr base<L, T, Tag> operator/(U a, base<L, T, Tag> const& b) noexcept {
 
 template <size_t L, typename T, typename Tag>
 constexpr base<L, T, Tag> operator+(base<L, T, Tag> const& a) noexcept {
-    return base<L, T, Tag> {a};
+    return base<L, T, Tag>{a};
 }
 
 template <size_t L, typename T, typename Tag>
@@ -228,5 +228,15 @@ constexpr base<L, T, Tag> mod(base<L, T, Tag> const& a, U b) noexcept {
     } else {
         return detail::op_binary(a, b, [](auto _1, auto _2) { return std::fmod(_1, _2); });
     }
+}
+
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> sin(base<L, T, Tag> const& a) noexcept {
+    return detail::op_unary(a, [](auto _1) { return std::sin(_1); });
+}
+
+template <size_t L, typename T, typename U, typename Tag>
+constexpr base<L, T, Tag> cos(base<L, T, Tag> const& a) noexcept {
+    return detail::op_unary(a, [](auto _1) { return std::cos(_1); });
 }
 }
